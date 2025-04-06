@@ -1,5 +1,5 @@
 ﻿namespace connectfour_group5 {
-    partial class formTITLE {
+    partial class formGAME {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,53 +23,35 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formTITLE));
-            this.labelTITLE = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // labelTITLE
-            // 
-            this.labelTITLE.Font = new System.Drawing.Font("Microsoft Tai Le", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTITLE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
-            this.labelTITLE.Location = new System.Drawing.Point(305, 0);
-            this.labelTITLE.Name = "labelTITLE";
-            this.labelTITLE.Size = new System.Drawing.Size(350, 133);
-            this.labelTITLE.TabIndex = 0;
-            this.labelTITLE.Text = "CONNECT FOUR";
-            this.labelTITLE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(305, 500);
+            this.button1.Location = new System.Drawing.Point(351, 351);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(350, 23);
-            this.button1.TabIndex = 1;
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // formTITLE
+            // formGAME
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
-            this.ClientSize = new System.Drawing.Size(960, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.labelTITLE);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "formTITLE";
+            this.Name = "formGAME";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Connect Four";
+            this.Text = "formGAME";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label labelTITLE;
         private System.Windows.Forms.Button button1;
     }
 }
-

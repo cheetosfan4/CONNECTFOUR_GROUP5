@@ -9,21 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace connectfour_group5 {
-    public partial class formTITLE : Form {
-        public formTITLE() {
+    public partial class formGAME : Form {
+        formTITLE tform;
+        public formGAME() {
             InitializeComponent();
-            Board board = new Board();
-            board.outputCells();
         }
-
-        public void loadNewForm() {
-            formGAME formToLoad = new formGAME(this);
-            formToLoad.Show();
-            this.Hide();
+        public formGAME(formTITLE title) {
+            InitializeComponent();
+            tform = title;
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            loadNewForm();
+            this.Close();
+            tform.Show();
         }
     }
 }
