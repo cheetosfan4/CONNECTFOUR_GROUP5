@@ -48,25 +48,43 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="Cell.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="formMULTIPLAYER.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="formMULTIPLAYER.Designer.cs">
+      <DependentUpon>formMULTIPLAYER.cs</DependentUpon>
     </Compile>
-    <Compile Include="formGAME.cs">
+    <Compile Include="formTITLE.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formGAME.Designer.cs">
-      <DependentUpon>formGAME.cs</DependentUpon>
+    <Compile Include="formTITLE.Designer.cs">
+      <DependentUpon>formTITLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formSINGLEPLAYER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSINGLEPLAYER.Designer.cs">
+      <DependentUpon>formSINGLEPLAYER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formSTATISTICS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSTATISTICS.Designer.cs">
+      <DependentUpon>formSTATISTICS.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="formMULTIPLAYER.resx">
+      <DependentUpon>formMULTIPLAYER.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formGAME.resx">
-      <DependentUpon>formGAME.cs</DependentUpon>
+    <EmbeddedResource Include="formSTATISTICS.resx">
+      <DependentUpon>formSTATISTICS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formTITLE.resx">
+      <DependentUpon>formTITLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSINGLEPLAYER.resx">
+      <DependentUpon>formSINGLEPLAYER.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -89,6 +108,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connectfour_titlebg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connectfour_gamebg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\board.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip_empty.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
