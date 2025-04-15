@@ -50,5 +50,13 @@ namespace connectfour_group5 {
             }
         }
 
+        public Cell getCell(int x, int y) {
+            foreach (Cell c in cells) {
+                if (c.getXCoord() == x && c.getYCoord() == y) {
+                    return c;
+                }
+            }
+            return null;
+        }
     }
 }

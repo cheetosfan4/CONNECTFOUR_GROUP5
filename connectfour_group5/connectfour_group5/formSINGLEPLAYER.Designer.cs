@@ -168,6 +168,7 @@
             this.slot0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot0.TabIndex = 3;
             this.slot0.TabStop = false;
+            this.slot0.Click += new System.EventHandler(this.column0_Click);
             // 
             // slot1
             // 
@@ -311,6 +312,7 @@
             this.slot7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot7.TabIndex = 10;
             this.slot7.TabStop = false;
+            this.slot7.Click += new System.EventHandler(this.column0_Click);
             // 
             // slot27
             // 
@@ -388,6 +390,7 @@
             this.slot21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot21.TabIndex = 24;
             this.slot21.TabStop = false;
+            this.slot21.Click += new System.EventHandler(this.column0_Click);
             // 
             // slot20
             // 
@@ -465,6 +468,7 @@
             this.slot14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot14.TabIndex = 17;
             this.slot14.TabStop = false;
+            this.slot14.Click += new System.EventHandler(this.column0_Click);
             // 
             // slot41
             // 
@@ -542,6 +546,7 @@
             this.slot35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot35.TabIndex = 38;
             this.slot35.TabStop = false;
+            this.slot35.Click += new System.EventHandler(this.column0_Click);
             // 
             // slot34
             // 
@@ -619,6 +624,7 @@
             this.slot28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot28.TabIndex = 31;
             this.slot28.TabStop = false;
+            this.slot28.Click += new System.EventHandler(this.column0_Click);
             // 
             // formSINGLEPLAYER
             // 

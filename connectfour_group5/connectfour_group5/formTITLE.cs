@@ -10,14 +10,16 @@ using System.Windows.Forms;
 
 namespace connectfour_group5 {
     public partial class formTITLE : Form {
+
+        //private Board board = new Board();
+
         public formTITLE() {
             InitializeComponent();
-            Board board = new Board();
-            board.outputCells();
+            //board.outputCells();
         }
 
         public void loadNewForm(object sender, EventArgs e) {
-            if(sender == buttonSINGLEPLAYER) {
+            if (sender == buttonSINGLEPLAYER) {
                 formSINGLEPLAYER formToLoad = new formSINGLEPLAYER(this);
                 formToLoad.Show();
             }
@@ -25,11 +27,11 @@ namespace connectfour_group5 {
                 formMULTIPLAYER formToLoad = new formMULTIPLAYER(this);
                 formToLoad.Show();
             }
-            if(sender == buttonSTATISTICS) {
+            if (sender == buttonSTATISTICS) {
                 formSTATISTICS formToLoad = new formSTATISTICS(this);
                 formToLoad.Show();
             }
-            if(sender == buttonEXIT) {
+            if (sender == buttonEXIT) {
                 this.Close();
             }
             this.Hide();
