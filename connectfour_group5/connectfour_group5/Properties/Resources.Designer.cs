@@ -93,9 +93,29 @@ namespace connectfour_group5.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chip_red_preview {
+            get {
+                object obj = ResourceManager.GetObject("chip_red_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chip_yellow {
             get {
                 object obj = ResourceManager.GetObject("chip_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chip_yellow_preview {
+            get {
+                object obj = ResourceManager.GetObject("chip_yellow_preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

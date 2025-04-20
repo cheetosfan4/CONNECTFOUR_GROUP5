@@ -127,5 +127,11 @@
   <ItemGroup>
     <None Include="Resources\chip_empty.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip_red_preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip_yellow_preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

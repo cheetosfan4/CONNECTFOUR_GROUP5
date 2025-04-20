@@ -28,18 +28,31 @@ namespace connectfour_group5 {
             }
         }
 
-        public void updateCell(int player, int x, int y) {
+        public int updateCell(int player, int x) {
             int columnAmount = 0;
             for (int i = 0; i < cells.Count; i++) {
-                if (cells[i].getXCoord() == x) {
+                if (cells[i].getXCoord() == x && cells[i].getState() != 0) {
                     columnAmount++;
                 }
             }
             //sets the state for the cell above the current top cell in the selected column
-            for (int i = 0; i < cells.Count; i++) {
-                if (cells[i].getXCoord() == x && cells[i].getYCoord() == (5 - columnAmount)) {
-                    cells[i].setState(player);
+
+            //i made it so it only runs this loop if player1/player2 place a chip
+            //so for the preview chips it still calculates the amount of chips in a column it just doesn't actually update any cells
+            if (player == 1 || player == 2) {
+                for (int i = 0; i < cells.Count; i++) {
+                    if (cells[i].getXCoord() == x && cells[i].getYCoord() == (5 - columnAmount)) {
+                        cells[i].setState(player);
+                        Console.WriteLine("chip set to " + player + " at: " + cells[i].getXCoord() + ", " + cells[i].getYCoord());
+                    }
                 }
+            }
+            if (columnAmount == 6) {
+                //this is just when the column is full
+                return 99;
+            }
+            else {
+                return columnAmount;
             }
         }
 
