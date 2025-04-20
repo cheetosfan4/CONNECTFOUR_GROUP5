@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace connectfour_group5 {
     public partial class formTITLE : Form {
 
-        //private Board board = new Board();
+        private List<Form> savedGames = new List<Form>();
 
         public formTITLE() {
             InitializeComponent();
@@ -20,11 +20,11 @@ namespace connectfour_group5 {
 
         public void loadNewForm(object sender, EventArgs e) {
             if (sender == buttonSINGLEPLAYER) {
-                formSINGLEPLAYER formToLoad = new formSINGLEPLAYER(this);
+                formGAMEPLAY formToLoad = new formGAMEPLAY(this, false, savedGames);
                 formToLoad.Show();
             }
             if (sender == buttonMULTIPLAYER) {
-                formMULTIPLAYER formToLoad = new formMULTIPLAYER(this);
+				formGAMEPLAY formToLoad = new formGAMEPLAY(this, true, savedGames);
                 formToLoad.Show();
             }
             if (sender == buttonSTATISTICS) {

@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="formGAMEOVER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formGAMEOVER.Designer.cs">
+      <DependentUpon>formGAMEOVER.cs</DependentUpon>
+    </Compile>
     <Compile Include="formMULTIPLAYER.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,11 +66,11 @@
     <Compile Include="formTITLE.Designer.cs">
       <DependentUpon>formTITLE.cs</DependentUpon>
     </Compile>
-    <Compile Include="formSINGLEPLAYER.cs">
+    <Compile Include="formGAMEPLAY.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formSINGLEPLAYER.Designer.cs">
-      <DependentUpon>formSINGLEPLAYER.cs</DependentUpon>
+    <Compile Include="formGAMEPLAY.Designer.cs">
+      <DependentUpon>formGAMEPLAY.cs</DependentUpon>
     </Compile>
     <Compile Include="formSTATISTICS.cs">
       <SubType>Form</SubType>
@@ -74,6 +80,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formGAMEOVER.resx">
+      <DependentUpon>formGAMEOVER.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formMULTIPLAYER.resx">
       <DependentUpon>formMULTIPLAYER.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,8 +92,8 @@
     <EmbeddedResource Include="formTITLE.resx">
       <DependentUpon>formTITLE.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formSINGLEPLAYER.resx">
-      <DependentUpon>formSINGLEPLAYER.cs</DependentUpon>
+    <EmbeddedResource Include="formGAMEPLAY.resx">
+      <DependentUpon>formGAMEPLAY.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -168,6 +168,9 @@
             this.slot41.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot41.TabIndex = 86;
             this.slot41.TabStop = false;
+            this.slot41.Click += new System.EventHandler(this.cellClick);
+            this.slot41.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot41.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot40
             // 
@@ -179,6 +182,9 @@
             this.slot40.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot40.TabIndex = 85;
             this.slot40.TabStop = false;
+            this.slot40.Click += new System.EventHandler(this.cellClick);
+            this.slot40.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot40.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot39
             // 
@@ -190,6 +196,9 @@
             this.slot39.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot39.TabIndex = 84;
             this.slot39.TabStop = false;
+            this.slot39.Click += new System.EventHandler(this.cellClick);
+            this.slot39.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot39.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot38
             // 
@@ -201,6 +210,9 @@
             this.slot38.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot38.TabIndex = 83;
             this.slot38.TabStop = false;
+            this.slot38.Click += new System.EventHandler(this.cellClick);
+            this.slot38.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot38.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot37
             // 
@@ -212,6 +224,9 @@
             this.slot37.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot37.TabIndex = 82;
             this.slot37.TabStop = false;
+            this.slot37.Click += new System.EventHandler(this.cellClick);
+            this.slot37.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot37.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot36
             // 
@@ -223,6 +238,9 @@
             this.slot36.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot36.TabIndex = 81;
             this.slot36.TabStop = false;
+            this.slot36.Click += new System.EventHandler(this.cellClick);
+            this.slot36.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot36.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot35
             // 
@@ -234,6 +252,9 @@
             this.slot35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot35.TabIndex = 80;
             this.slot35.TabStop = false;
+            this.slot35.Click += new System.EventHandler(this.cellClick);
+            this.slot35.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot35.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot34
             // 
@@ -245,6 +266,9 @@
             this.slot34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot34.TabIndex = 79;
             this.slot34.TabStop = false;
+            this.slot34.Click += new System.EventHandler(this.cellClick);
+            this.slot34.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot34.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot33
             // 
@@ -256,6 +280,9 @@
             this.slot33.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot33.TabIndex = 78;
             this.slot33.TabStop = false;
+            this.slot33.Click += new System.EventHandler(this.cellClick);
+            this.slot33.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot33.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot32
             // 
@@ -267,6 +294,9 @@
             this.slot32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot32.TabIndex = 77;
             this.slot32.TabStop = false;
+            this.slot32.Click += new System.EventHandler(this.cellClick);
+            this.slot32.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot32.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot31
             // 
@@ -278,6 +308,9 @@
             this.slot31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot31.TabIndex = 76;
             this.slot31.TabStop = false;
+            this.slot31.Click += new System.EventHandler(this.cellClick);
+            this.slot31.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot31.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot30
             // 
@@ -289,6 +322,9 @@
             this.slot30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot30.TabIndex = 75;
             this.slot30.TabStop = false;
+            this.slot30.Click += new System.EventHandler(this.cellClick);
+            this.slot30.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot30.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot29
             // 
@@ -300,6 +336,9 @@
             this.slot29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot29.TabIndex = 74;
             this.slot29.TabStop = false;
+            this.slot29.Click += new System.EventHandler(this.cellClick);
+            this.slot29.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot29.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot28
             // 
@@ -311,6 +350,9 @@
             this.slot28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot28.TabIndex = 73;
             this.slot28.TabStop = false;
+            this.slot28.Click += new System.EventHandler(this.cellClick);
+            this.slot28.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot28.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot27
             // 
@@ -322,6 +364,9 @@
             this.slot27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot27.TabIndex = 72;
             this.slot27.TabStop = false;
+            this.slot27.Click += new System.EventHandler(this.cellClick);
+            this.slot27.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot27.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot26
             // 
@@ -333,6 +378,9 @@
             this.slot26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot26.TabIndex = 71;
             this.slot26.TabStop = false;
+            this.slot26.Click += new System.EventHandler(this.cellClick);
+            this.slot26.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot26.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot25
             // 
@@ -344,6 +392,9 @@
             this.slot25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot25.TabIndex = 70;
             this.slot25.TabStop = false;
+            this.slot25.Click += new System.EventHandler(this.cellClick);
+            this.slot25.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot25.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot24
             // 
@@ -355,6 +406,9 @@
             this.slot24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot24.TabIndex = 69;
             this.slot24.TabStop = false;
+            this.slot24.Click += new System.EventHandler(this.cellClick);
+            this.slot24.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot24.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot23
             // 
@@ -366,6 +420,9 @@
             this.slot23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot23.TabIndex = 68;
             this.slot23.TabStop = false;
+            this.slot23.Click += new System.EventHandler(this.cellClick);
+            this.slot23.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot23.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot22
             // 
@@ -377,6 +434,9 @@
             this.slot22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot22.TabIndex = 67;
             this.slot22.TabStop = false;
+            this.slot22.Click += new System.EventHandler(this.cellClick);
+            this.slot22.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot22.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot21
             // 
@@ -388,6 +448,9 @@
             this.slot21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot21.TabIndex = 66;
             this.slot21.TabStop = false;
+            this.slot21.Click += new System.EventHandler(this.cellClick);
+            this.slot21.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot21.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot20
             // 
@@ -399,6 +462,9 @@
             this.slot20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot20.TabIndex = 65;
             this.slot20.TabStop = false;
+            this.slot20.Click += new System.EventHandler(this.cellClick);
+            this.slot20.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot20.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot19
             // 
@@ -410,6 +476,9 @@
             this.slot19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot19.TabIndex = 64;
             this.slot19.TabStop = false;
+            this.slot19.Click += new System.EventHandler(this.cellClick);
+            this.slot19.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot19.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot18
             // 
@@ -421,6 +490,9 @@
             this.slot18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot18.TabIndex = 63;
             this.slot18.TabStop = false;
+            this.slot18.Click += new System.EventHandler(this.cellClick);
+            this.slot18.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot18.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot17
             // 
@@ -432,6 +504,9 @@
             this.slot17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot17.TabIndex = 62;
             this.slot17.TabStop = false;
+            this.slot17.Click += new System.EventHandler(this.cellClick);
+            this.slot17.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot17.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot16
             // 
@@ -443,6 +518,9 @@
             this.slot16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot16.TabIndex = 61;
             this.slot16.TabStop = false;
+            this.slot16.Click += new System.EventHandler(this.cellClick);
+            this.slot16.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot16.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot15
             // 
@@ -454,6 +532,9 @@
             this.slot15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot15.TabIndex = 60;
             this.slot15.TabStop = false;
+            this.slot15.Click += new System.EventHandler(this.cellClick);
+            this.slot15.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot15.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot14
             // 
@@ -465,6 +546,9 @@
             this.slot14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot14.TabIndex = 59;
             this.slot14.TabStop = false;
+            this.slot14.Click += new System.EventHandler(this.cellClick);
+            this.slot14.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot14.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot13
             // 
@@ -476,6 +560,9 @@
             this.slot13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot13.TabIndex = 58;
             this.slot13.TabStop = false;
+            this.slot13.Click += new System.EventHandler(this.cellClick);
+            this.slot13.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot13.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot12
             // 
@@ -487,6 +574,9 @@
             this.slot12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot12.TabIndex = 57;
             this.slot12.TabStop = false;
+            this.slot12.Click += new System.EventHandler(this.cellClick);
+            this.slot12.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot12.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot11
             // 
@@ -498,6 +588,9 @@
             this.slot11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot11.TabIndex = 56;
             this.slot11.TabStop = false;
+            this.slot11.Click += new System.EventHandler(this.cellClick);
+            this.slot11.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot11.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot10
             // 
@@ -509,6 +602,9 @@
             this.slot10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot10.TabIndex = 55;
             this.slot10.TabStop = false;
+            this.slot10.Click += new System.EventHandler(this.cellClick);
+            this.slot10.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot10.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot9
             // 
@@ -520,6 +616,9 @@
             this.slot9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot9.TabIndex = 54;
             this.slot9.TabStop = false;
+            this.slot9.Click += new System.EventHandler(this.cellClick);
+            this.slot9.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot9.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot8
             // 
@@ -531,6 +630,9 @@
             this.slot8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot8.TabIndex = 53;
             this.slot8.TabStop = false;
+            this.slot8.Click += new System.EventHandler(this.cellClick);
+            this.slot8.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot8.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot7
             // 
@@ -542,6 +644,9 @@
             this.slot7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot7.TabIndex = 52;
             this.slot7.TabStop = false;
+            this.slot7.Click += new System.EventHandler(this.cellClick);
+            this.slot7.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot7.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot6
             // 
@@ -553,6 +658,9 @@
             this.slot6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot6.TabIndex = 51;
             this.slot6.TabStop = false;
+            this.slot6.Click += new System.EventHandler(this.cellClick);
+            this.slot6.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot6.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot5
             // 
@@ -564,6 +672,9 @@
             this.slot5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot5.TabIndex = 50;
             this.slot5.TabStop = false;
+            this.slot5.Click += new System.EventHandler(this.cellClick);
+            this.slot5.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot5.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot4
             // 
@@ -575,6 +686,9 @@
             this.slot4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot4.TabIndex = 49;
             this.slot4.TabStop = false;
+            this.slot4.Click += new System.EventHandler(this.cellClick);
+            this.slot4.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot4.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot3
             // 
@@ -586,6 +700,9 @@
             this.slot3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot3.TabIndex = 48;
             this.slot3.TabStop = false;
+            this.slot3.Click += new System.EventHandler(this.cellClick);
+            this.slot3.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot3.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot2
             // 
@@ -597,6 +714,9 @@
             this.slot2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot2.TabIndex = 47;
             this.slot2.TabStop = false;
+            this.slot2.Click += new System.EventHandler(this.cellClick);
+            this.slot2.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot2.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot1
             // 
@@ -608,6 +728,9 @@
             this.slot1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot1.TabIndex = 46;
             this.slot1.TabStop = false;
+            this.slot1.Click += new System.EventHandler(this.cellClick);
+            this.slot1.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot1.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // slot0
             // 
@@ -619,6 +742,9 @@
             this.slot0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.slot0.TabIndex = 45;
             this.slot0.TabStop = false;
+            this.slot0.Click += new System.EventHandler(this.cellClick);
+            this.slot0.MouseEnter += new System.EventHandler(this.cellHover);
+            this.slot0.MouseLeave += new System.EventHandler(this.cellLeave);
             // 
             // formMULTIPLAYER
             // 
