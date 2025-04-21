@@ -36,5 +36,10 @@ namespace connectfour_group5 {
             }
             this.Hide();
         }
+
+        private void labelTITLE_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

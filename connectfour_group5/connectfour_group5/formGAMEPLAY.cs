@@ -17,7 +17,8 @@ namespace connectfour_group5 {
 		private formTITLE tform;
 		private Board board;
 		private int player = 1;
-		private List<Form> savedGames;
+        
+        private List<Form> savedGames;
 
 		private PictureBox[] column0 = new PictureBox[6], column1 = new PictureBox[6], 
 			column2 = new PictureBox[6], column3 = new PictureBox[6], column4 = new PictureBox[6], 
@@ -227,6 +228,7 @@ namespace connectfour_group5 {
 				return false;
 			}
 			if (
+				// there is an issue where if you fill a colloum it breaks 
 				board.getCell(cell.getXCoord(), cell.getYCoord() - 1).getState() == stateToCheck &&
 				board.getCell(cell.getXCoord(), cell.getYCoord() - 2).getState() == stateToCheck &&
 				board.getCell(cell.getXCoord(), cell.getYCoord() - 3).getState() == stateToCheck
