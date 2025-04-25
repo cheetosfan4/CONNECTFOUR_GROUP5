@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using connectfour_group5.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Xml.Linq;
+using System.Threading;
 
 namespace connectfour_group5 {
 	public partial class formGAMEPLAY : Form {
@@ -62,12 +63,19 @@ namespace connectfour_group5 {
 		private void cellClick(object sender, EventArgs e) {
 			if (!gameover) {
 				placeChip(sender, player);
-				if (multiplayer) {
-					switchPlayer();
-				}
 			}
 
 			checkVictory();
+			switchPlayer();
+
+			if (!multiplayer) {
+				Random random = new Random();
+				Thread.Sleep(random.Next(500, 2000));
+				placeChip(columns[random.Next(0, 6)][5], 2);
+
+				checkVictory();
+				switchPlayer();
+			}
 
 			//this is just to re-show the preview chip after the player places one
 			//originally it wouldn't show a new one until the player moved the mouse onto a different cell but i thought that looked weird
@@ -169,8 +177,9 @@ namespace connectfour_group5 {
 			} else {
 				image = Resources.chip_empty;
 			}*/
-
-			columns[column][y].Image = image;
+			if (y < 6) {
+				columns[column][y].Image = image;
+			}
 		}
 
 		public void switchPlayer() {
@@ -186,7 +195,7 @@ namespace connectfour_group5 {
 			}
 		}
 
-		public void checkVictory() {
+		public async void checkVictory() {
 			Cell cell;
 			// loop through every slot and check the cell at that slot
 			for (int x = 0; x < columns.Length; x++) {
@@ -199,6 +208,7 @@ namespace connectfour_group5 {
 						downRightVictory(cell)
 					) {
 						gameover = true;
+						await Task.Delay(1000);
 						displayWinner(cell.getState());
 						return;
 					}
@@ -224,7 +234,7 @@ namespace connectfour_group5 {
 
 		private bool verticalVictory(Cell cell) {
 			int stateToCheck = cell.getState();
-			if (stateToCheck == 0) {
+			if (stateToCheck == 0 || cell.getYCoord() < 3) {
 				return false;
 			}
 			if (
@@ -241,7 +251,7 @@ namespace connectfour_group5 {
 
 		private bool downLeftVictory(Cell cell) {
 			int stateToCheck = cell.getState();
-			if (stateToCheck == 0 || cell.getXCoord() < 4) {
+			if (stateToCheck == 0 || cell.getXCoord() < 4 || cell.getYCoord() < 3) {
 				return false;
 			}
 			if (
@@ -257,7 +267,7 @@ namespace connectfour_group5 {
 
 		private bool downRightVictory(Cell cell) {
 			int stateToCheck = cell.getState();
-			if (stateToCheck == 0 || cell.getXCoord() > 3) {
+			if (stateToCheck == 0 || cell.getXCoord() > 3 || cell.getYCoord() < 3) {
 				return false;
 			}
 			if (
@@ -347,5 +357,28 @@ namespace connectfour_group5 {
 			columns[5] = column5;
 			columns[6] = column6;
 		}
+
+		// AI
+
+		public void checkForWinningCell() {
+
+		}
+
+		/*public Cell verticalWinningCell(Cell cell) {
+			int stateToCheck = cell.getState();
+			if (stateToCheck == 0) {
+				return false;
+			}
+			if (
+				// there is an issue where if you fill a colloum it breaks 
+				board.getCell(cell.getXCoord(), cell.getYCoord() - 1).getState() == stateToCheck &&
+				board.getCell(cell.getXCoord(), cell.getYCoord() - 2).getState() == stateToCheck &&
+				board.getCell(cell.getXCoord(), cell.getYCoord() - 3).getState() == stateToCheck
+			) {
+				return true;
+			} else {
+				return false;
+			}
+		}*/
 	}
 }

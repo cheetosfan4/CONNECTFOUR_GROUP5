@@ -76,7 +76,7 @@ namespace connectfour_group5
         private string readtxtfile(string line)
         {
             // need to change path to work with evveryone
-            string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+            string filePath = @"connectfour_group5\connectfour_group5\stats.txt";
             if (File.Exists(filePath))
             {
                 using (StreamReader reader = new StreamReader(filePath))
