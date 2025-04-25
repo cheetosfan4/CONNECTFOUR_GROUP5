@@ -11,6 +11,7 @@ using connectfour_group5.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Xml.Linq;
 using System.Threading;
+using System.Runtime.Remoting.Channels;
 
 namespace connectfour_group5 {
 	public partial class formGAMEPLAY : Form {
@@ -61,19 +62,28 @@ namespace connectfour_group5 {
 		//i wrote placeChip() to include code for player 2 (the ai) but i think it will have to be a separate function
 		//cause it cant click on stuff lol so it won't have a "sender" object
 		private void cellClick(object sender, EventArgs e) {
-			if (!gameover) {
+			//i added these variables to check the amount of chips in the column BEFORE the new one is placed
+			//if its five, the next one will fill up the column
+			//continued explanation below
+            int column = columnCheck(sender);
+            int y = board.updateCell(3, column);
+
+            if (!gameover) {
 				placeChip(sender, player);
+				checkVictory();
 			}
 
-			checkVictory();
-			switchPlayer();
-
-			if (!multiplayer) {
-				Random random = new Random();
-				Thread.Sleep(random.Next(500, 2000));
+            if (!multiplayer && y != -1 && !gameover) {
+                Random random = new Random();
+                Thread.Sleep(random.Next(500, 2000));
 				placeChip(columns[random.Next(0, 6)][5], 2);
-
 				checkVictory();
+			}
+
+
+			//if i made it check the amount after placing the chip it wouldn't switch players upon placing the top chip
+			//so i made it check the amount beforehand to avoid that
+			if (multiplayer && y != -1 && !gameover) {
 				switchPlayer();
 			}
 
@@ -177,12 +187,13 @@ namespace connectfour_group5 {
 			} else {
 				image = Resources.chip_empty;
 			}*/
-			if (y < 6) {
+			if (y < 6 && y != -1) {
 				columns[column][y].Image = image;
 			}
 		}
 
 		public void switchPlayer() {
+
 			if (player == 1) {
 				player = 2;
 				buttonCURRENT_TURN.Text = "PLAYER 2'S TURN";

@@ -13,6 +13,7 @@ namespace connectfour_group5 {
 	public partial class formGAMEOVER : Form {
 
 		private bool multiplayer;
+        private bool switching = false;
 		private formGAMEPLAY formGameplay;
 		private formTITLE tform;
 		private List<Form> savedGames;
@@ -22,6 +23,7 @@ namespace connectfour_group5 {
 
         public formGAMEOVER(formGAMEPLAY formGameplay, formTITLE title, int winner, bool multiplayer, List<Form> savedGames) {
 			InitializeComponent();
+            readtxtfile();
 			this.multiplayer = multiplayer;
 			this.formGameplay = formGameplay;
 			this.tform = title;
@@ -55,12 +57,22 @@ namespace connectfour_group5 {
 		}
 
 		private void buttonTITLE_Click(object sender, EventArgs e) {
-			this.Hide();
+            //this.Hide();
+            switching = true;
+            this.Close();
 			tform.Show();
 		}
 
-		private void buttonCLOSE_Click(object sender, EventArgs e) {
+        private void formGAMEOVER_FormClosed(object sender, FormClosedEventArgs e) {
+            if (!switching) {
+                tform.Close();
+            }
+            switching = false;
+        }
+
+        private void buttonCLOSE_Click(object sender, EventArgs e) {
 			this.Close();
+            tform.Close();
 		}
 
 		private void buttonPLAY_AGAIN_Click(object sender, EventArgs e) {
@@ -79,10 +91,12 @@ namespace connectfour_group5 {
         {
 
         }
-        private string readtxtfile(string line)
+        private void readtxtfile()
         {
             // need to change path to work with evveryone
-            string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+            //string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+            string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
+            string line = "";
             if (File.Exists(filePath))
             {
                 using (StreamReader reader = new StreamReader(filePath))
@@ -93,18 +107,17 @@ namespace connectfour_group5 {
                     playerloss = Int32.Parse(line);
                     line = reader.ReadLine();
                     draws = Int32.Parse(line);
-                    return line;
                 }
             }
             else
             {
                 MessageBox.Show($"File not found: {filePath}");
-                return null;
             }
         }
         private void writetofile()
         {
-            string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+            //string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+            string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
             if (File.Exists(filePath))
             {
                
@@ -124,5 +137,7 @@ namespace connectfour_group5 {
             }
 
         }
+
+
     }
 }

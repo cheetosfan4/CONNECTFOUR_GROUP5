@@ -76,7 +76,11 @@ namespace connectfour_group5
         private string readtxtfile(string line)
         {
             // need to change path to work with evveryone
-            string filePath = @"connectfour_group5\connectfour_group5\stats.txt";
+            //string filePath = @"connectfour_group5\connectfour_group5\stats.txt";
+
+            //the above path wasn't working for me for some reason so i tried to fix it like this
+            //lmk if this works for everyone
+            string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
             if (File.Exists(filePath))
             {
                 using (StreamReader reader = new StreamReader(filePath))

@@ -14,7 +14,5 @@ namespace connectfour_group5 {
 			this.board = board;
 			this.columns = columns;
 		}
-
-
 	}
 }
