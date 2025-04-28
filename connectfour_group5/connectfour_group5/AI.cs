@@ -93,12 +93,15 @@ namespace connectfour_group5 {
 				// y increases down - 0 is top row, 5 is bottom
 				if (y > 0) {
 					if (
+							// line start
+							board.getCell(x, y).getState() == 2
+						&& (
 							// if height is 2, check if above cell is empty
 							// otherwise, check if its an ai chip
 							height == 2 ?
 							board.getCell(x, y - 1).getState() == 0 :
 							board.getCell(x, y - 1).getState() == 2
-						&& (
+						) && (
 							// if height is 3 or 4, check if the cell 2 spots up is an ai chip
 							// otherwise, check if that spot is empty
 							y < 1 ||

@@ -13,31 +13,30 @@ namespace connectfour_group5 {
 	public partial class formGAMEOVER : Form {
 
 		private bool multiplayer;
-        private bool switching = false;
+		private bool switching = false;
 		private formGAMEPLAY formGameplay;
 		private formTITLE tform;
 		private List<Form> savedGames;
-        private int playerwin = 0;
-        private int playerloss = 0;
-        private int draws = 0;
+		private int playerwin = 0;
+		private int playerloss = 0;
+		private int draws = 0;
 
-        public formGAMEOVER(formGAMEPLAY formGameplay, formTITLE title, int winner, bool multiplayer, bool draw, List<Form> savedGames) {
+		public formGAMEOVER(formGAMEPLAY formGameplay, formTITLE title, int winner, bool multiplayer, bool draw, List<Form> savedGames) {
 			InitializeComponent();
-            readtxtfile();
 			this.multiplayer = multiplayer;
 			this.formGameplay = formGameplay;
 			this.tform = title;
 			this.savedGames = savedGames;
 			
-            // need to make draws
-            if (winner == 1) 
+			// need to make draws
+			if (winner == 1) 
 			{
 				labelWINNER.Text = "PLAYER 1 WINS!";
 				if(!multiplayer)
 				{
 					playerwin++;
 					writetofile();
-                }
+				}
 
 			} 
 			else if (winner == 2) 
@@ -45,42 +44,44 @@ namespace connectfour_group5 {
 				if (!multiplayer)
 				{
 					labelWINNER.Text = "COMPUTER WINS!";
-                    playerloss++;
-                    writetofile();
+					playerloss++;
+					writetofile();
 
-                } 
+				} 
 				else 
 				{
 					labelWINNER.Text = "PLAYER 2 WINS!";
 				}
 			}
-            
-            if (draw) {
-                labelWINNER.Text = "DRAW!";
-                if (!multiplayer) {
-                    draws++;
-                    writetofile();
-                }
-            }
+			
+			if (draw) {
+				labelWINNER.Text = "DRAW!";
+				if (!multiplayer) {
+					draws++;
+					writetofile();
+				}
+			}
+
+			readtxtfile();
 		}
 
 		private void buttonTITLE_Click(object sender, EventArgs e) {
-            //this.Hide();
-            switching = true;
-            this.Close();
+			//this.Hide();
+			switching = true;
+			this.Close();
 			tform.Show();
 		}
 
-        private void formGAMEOVER_FormClosed(object sender, FormClosedEventArgs e) {
-            if (!switching) {
-                tform.Close();
-            }
-            switching = false;
-        }
+		private void formGAMEOVER_FormClosed(object sender, FormClosedEventArgs e) {
+			if (!switching) {
+				tform.Close();
+			}
+			switching = false;
+		}
 
-        private void buttonCLOSE_Click(object sender, EventArgs e) {
+		private void buttonCLOSE_Click(object sender, EventArgs e) {
 			this.Close();
-            tform.Close();
+			tform.Close();
 		}
 
 		private void buttonPLAY_AGAIN_Click(object sender, EventArgs e) {
@@ -95,57 +96,47 @@ namespace connectfour_group5 {
 			formGameplay.Show();
 		}
 
-        private void labelWINNER_Click(object sender, EventArgs e)
-        {
+		private void readtxtfile() {
+			// need to change path to work with evveryone
+			//string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+			string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
+			string line = "";
+			if (File.Exists(filePath)) {
+				using (StreamReader reader = new StreamReader(filePath)) {
+					line = reader.ReadLine();
+					playerwin = Int32.Parse(line);
+					line = reader.ReadLine();
+					playerloss = Int32.Parse(line);
+					line = reader.ReadLine();
+					draws = Int32.Parse(line);
+				}
+			} else {
+				MessageBox.Show($"File not found: {filePath}");
+			}
+		}
 
-        }
-        private void readtxtfile()
-        {
-            // need to change path to work with evveryone
-            //string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
-            string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
-            string line = "";
-            if (File.Exists(filePath))
-            {
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    line = reader.ReadLine();
-                    playerwin = Int32.Parse(line);
-                    line = reader.ReadLine();
-                    playerloss = Int32.Parse(line);
-                    line = reader.ReadLine();
-                    draws = Int32.Parse(line);
-                }
-            }
-            else
-            {
-                MessageBox.Show($"File not found: {filePath}");
-            }
-        }
-        private void writetofile()
-        {
-            //string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
-            string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
-            if (File.Exists(filePath))
-            {
-               
-                   File.WriteAllText(filePath, string.Empty);
-                    using (StreamWriter writer = new StreamWriter(filePath))
-                    {
-                        writer.WriteLine(playerwin);
-                        writer.WriteLine(playerloss);
-                        writer.WriteLine(draws);
-                    }
-                
-            }
-            else
-            {
-                MessageBox.Show($"File not found: {filePath}");
-                
-            }
-
-        }
-
-
-    }
+		private void writetofile()
+		{
+			//string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+			string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
+			if (File.Exists(filePath))
+			{
+				File.WriteAllText(filePath, string.Empty);
+				using (StreamWriter writer = new StreamWriter(filePath))
+				{
+					try {
+						writer.WriteLine(playerwin);
+						writer.WriteLine(playerloss);
+						writer.WriteLine(draws);
+					} catch (Exception e) {
+						MessageBox.Show(e.ToString());
+					}
+				}
+			}
+			else
+			{
+				MessageBox.Show($"File not found: {filePath}");  
+			}
+		}
+	}
 }

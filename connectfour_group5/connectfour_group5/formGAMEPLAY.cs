@@ -74,39 +74,50 @@ namespace connectfour_group5 {
 			int y = board.updateCell(player + 2, column);
 
 			if (!gameover) {
-				placeChip(sender, player);
+				if (multiplayer) {
+					placeChip(sender, player);
+				} else {
+					if (player == 1) {
+						placeChip(sender, 1);
+					}
+				}
 				checkVictory();
 				checkDraw();
 			}
 
-			//this is just to re-show the preview chip after the player places one
-			//originally it wouldn't show a new one until the player moved the mouse onto a different cell but i thought that looked weird
-			// check again before showing preview of slot above
-
-			if (!gameover) {
-				placeChip(sender, player + 2);
-			}
-
-			if (!multiplayer && y != -1 && !gameover) {
-				int aiColumn = ai.getOptimalColumn();
-				Random random = new Random();
-				await Task.Delay(random.Next(500, 2000));
-				placeChip(columns[aiColumn][5], 2);
-				checkVictory();
-				checkDraw();
-			}
-
+			
+			
 			//if i made it check the amount after placing the chip it wouldn't switch players upon placing the top chip
-			//so i made it check the amount beforehand to avoid that
+			 //so i made it check the amount beforehand to avoid that
 
-			if (multiplayer && y != -1 && !gameover) {
+			if (y != -1 && !gameover) {
 				switchPlayer();
+				//this is just to re-show the preview chip after the player places one
+				//originally it wouldn't show a new one until the player moved the mouse onto a different cell but i thought that looked weird
+				cellHover(sender, e);
+
+				if (!multiplayer) {
+					int aiColumn = ai.getOptimalColumn();
+					Random random = new Random();
+					await Task.Delay(random.Next(500, 2000));
+					placeChip(columns[aiColumn][5], 2);
+					checkVictory();
+					checkDraw();
+					switchPlayer();
+					cellHover(sender, e);
+				}
 			}
 		}
 
 		private void cellHover(object sender, EventArgs e) {
 			if (!gameover) {
-				placeChip(sender, player + 2);
+				if (multiplayer) {
+					placeChip(sender, player + 2);
+				} else {
+					if (player == 1) {
+						placeChip(sender, 3);
+					}
+				}
 			}
 		}
 
