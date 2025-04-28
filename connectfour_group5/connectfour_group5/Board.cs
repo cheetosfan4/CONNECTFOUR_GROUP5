@@ -31,6 +31,10 @@ namespace connectfour_group5 {
 			}
 		}
 
+		public List<Cell> getAllCells() {
+			return cells;
+		}
+
 		public int updateCell(int player, int x) {
 			int columnAmount = 0;
 			for (int i = 0; i < cells.Count; i++) {

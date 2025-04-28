@@ -21,7 +21,7 @@ namespace connectfour_group5 {
         private int playerloss = 0;
         private int draws = 0;
 
-        public formGAMEOVER(formGAMEPLAY formGameplay, formTITLE title, int winner, bool multiplayer, List<Form> savedGames) {
+        public formGAMEOVER(formGAMEPLAY formGameplay, formTITLE title, int winner, bool multiplayer, bool draw, List<Form> savedGames) {
 			InitializeComponent();
             readtxtfile();
 			this.multiplayer = multiplayer;
@@ -54,6 +54,14 @@ namespace connectfour_group5 {
 					labelWINNER.Text = "PLAYER 2 WINS!";
 				}
 			}
+            
+            if (draw) {
+                labelWINNER.Text = "DRAW!";
+                if (!multiplayer) {
+                    draws++;
+                    writetofile();
+                }
+            }
 		}
 
 		private void buttonTITLE_Click(object sender, EventArgs e) {

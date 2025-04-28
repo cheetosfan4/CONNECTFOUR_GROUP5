@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace connectfour_group5 {
-    internal class Cell {
+    public class Cell {
         private int state;
         private int xCoord;
         private int yCoord;
@@ -13,6 +13,7 @@ namespace connectfour_group5 {
         public Cell() {
             //state should be used for what the cell has in it
             //0 for empty, 1 for player 1's piece, and 2 for player 2's piece
+            //3 for player 1's preview, and 4 for player 2's preview
             state = 0;
             //x and y coords should just be integers counting up by 1, not their actual form control's coordinates on the form
             //that way it's simple to know which one you're manipulating
@@ -43,6 +44,10 @@ namespace connectfour_group5 {
         }
         public int getYCoord() {
             return yCoord;
+        }
+
+        public override string ToString() {
+            return "Cell: Position (" + xCoord + ", " + yCoord + "), State " + state;
         }
     }
 }

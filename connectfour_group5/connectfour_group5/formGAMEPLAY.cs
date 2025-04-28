@@ -15,13 +15,13 @@ using System.Runtime.Remoting.Channels;
 
 namespace connectfour_group5 {
 	public partial class formGAMEPLAY : Form {
-		private bool switching = false, multiplayer, gameover = false;
+		private bool switching = false, multiplayer, gameover = false, draw = false;
+		private int player = 1;
 		private formTITLE tform;
 		private Board board;
-		private int player = 1;
-        
-        private List<Form> savedGames;
-
+		private List<Form> savedGames;
+		private List<Cell> cells;
+		private AI ai;
 		private PictureBox[] column0 = new PictureBox[6], column1 = new PictureBox[6], 
 			column2 = new PictureBox[6], column3 = new PictureBox[6], column4 = new PictureBox[6], 
 			column5 = new PictureBox[6], column6 = new PictureBox[6];
@@ -32,7 +32,9 @@ namespace connectfour_group5 {
 			InitializeComponent();
 			columnSetup();
 			tform = title;
-			this.board = new Board();
+			board = new Board();
+			cells = board.getAllCells();
+			ai = new AI(board, columns, cells);
 			this.multiplayer = multiplayer;
 			this.Text = multiplayer ? "Connect Four: Multiplayer" : "Connect Four: Singleplayer";
 			this.savedGames = savedGames;
@@ -61,37 +63,44 @@ namespace connectfour_group5 {
 		//when we make the ai i think it should call an overloaded version of placeChip()
 		//i wrote placeChip() to include code for player 2 (the ai) but i think it will have to be a separate function
 		//cause it cant click on stuff lol so it won't have a "sender" object
-		private void cellClick(object sender, EventArgs e) {
+
+		private async void cellClick(object sender, EventArgs e) {
+
 			//i added these variables to check the amount of chips in the column BEFORE the new one is placed
 			//if its five, the next one will fill up the column
 			//continued explanation below
-            int column = columnCheck(sender);
-            int y = board.updateCell(3, column);
 
-            if (!gameover) {
+			int column = columnCheck(sender);
+			int y = board.updateCell(player + 2, column);
+
+			if (!gameover) {
 				placeChip(sender, player);
 				checkVictory();
-			}
-
-            if (!multiplayer && y != -1 && !gameover) {
-                Random random = new Random();
-                Thread.Sleep(random.Next(500, 2000));
-				placeChip(columns[random.Next(0, 6)][5], 2);
-				checkVictory();
-			}
-
-
-			//if i made it check the amount after placing the chip it wouldn't switch players upon placing the top chip
-			//so i made it check the amount beforehand to avoid that
-			if (multiplayer && y != -1 && !gameover) {
-				switchPlayer();
+				checkDraw();
 			}
 
 			//this is just to re-show the preview chip after the player places one
 			//originally it wouldn't show a new one until the player moved the mouse onto a different cell but i thought that looked weird
 			// check again before showing preview of slot above
+
 			if (!gameover) {
 				placeChip(sender, player + 2);
+			}
+
+			if (!multiplayer && y != -1 && !gameover) {
+				int aiColumn = ai.getOptimalColumn();
+				Random random = new Random();
+				await Task.Delay(random.Next(500, 2000));
+				placeChip(columns[aiColumn][5], 2);
+				checkVictory();
+				checkDraw();
+			}
+
+			//if i made it check the amount after placing the chip it wouldn't switch players upon placing the top chip
+			//so i made it check the amount beforehand to avoid that
+
+			if (multiplayer && y != -1 && !gameover) {
+				switchPlayer();
 			}
 		}
 
@@ -112,43 +121,46 @@ namespace connectfour_group5 {
 		// Functions -----------------------------------------------------------
 
 		public int columnCheck(object sender) {
+
 			//this loops through each column array to determine which column the player clicked
-			for (int i = 0; i < 6; i++) {
-				if (sender.Equals(columns[0][i])) {
+			for (int c = 0; c < columns.Length; c++) {
+				for (int r = 0; r < 6; r++) {
+					if (sender.Equals(columns[c][r])) {
+						return c;
+					}
+				}
+
+				// simplified with another loop
+
+				/*if (sender.Equals(columns[0][c])) {
 					return 0;
 				}
-				if (sender.Equals(columns[1][i])) {
+				if (sender.Equals(columns[1][c])) {
 					return 1;
 				}
-				if (sender.Equals(columns[2][i])) {
+				if (sender.Equals(columns[2][c])) {
 					return 2;
 				}
-				if (sender.Equals(columns[3][i])) {
+				if (sender.Equals(columns[3][c])) {
 					return 3;
 				}
-				if (sender.Equals(columns[4][i])) {
+				if (sender.Equals(columns[4][c])) {
 					return 4;
 				}
-				if (sender.Equals(columns[5][i])) {
+				if (sender.Equals(columns[5][c])) {
 					return 5;
 				}
-				if (sender.Equals(columns[6][i])) {
+				if (sender.Equals(columns[6][c])) {
 					return 6;
-				}
+				}*/
 			}
+
 			//this is just in case some weird error happens
 			return -1;
 		}
 
 		public void placeChip(object sender, int player) {
-			// check for lowest available slot in that column - 
-			// loop through all slots
-			// for each slot, get the cell at that slot
-			// if the state of that cell is 0 (empty), change its state to whichever player is placing the chip and break the loop
-			// if the state is either 1 or 2, iterate to the next slot in the column (the slot directly above)
-
-			//yo i had something like kindof similar to this ^ already in the board class (updateCell())
-			//i fixed it up a bit and just integrated it into this function
+			
 			int y;
 			Image image;
 			int column = columnCheck(sender);
@@ -174,19 +186,6 @@ namespace connectfour_group5 {
 					break;
 			}
 
-			// Simplified using 2d array
-			/*if (player == 1) {
-				//idk why the file path method you used wasn't working but Resources.[filename] works
-				image = Resources.chip_red;
-			} else if (player == 2) {
-				image = Resources.chip_yellow;
-			} else if (player == 3) {
-				image = Resources.chip_red_preview;
-			} else if (player == 4) {
-				image = Resources.chip_yellow_preview;
-			} else {
-				image = Resources.chip_empty;
-			}*/
 			if (y < 6 && y != -1) {
 				columns[column][y].Image = image;
 			}
@@ -202,32 +201,27 @@ namespace connectfour_group5 {
 			if (player == 2) {
 				player = 1;
 				buttonCURRENT_TURN.Text = "PLAYER 1'S TURN";
-				return;
+				return; 
 			}
 		}
 
-		public async void checkVictory() {
-			Cell cell;
+		public void checkVictory() {
 			// loop through every slot and check the cell at that slot
-			for (int x = 0; x < columns.Length; x++) {
-				for (int y = 0; y < columns[x].Length; y++) {
-					cell = board.getCell(x, y);
-					if (
-						horizontalVictory(cell) ||
-						verticalVictory(cell) ||
-						downLeftVictory(cell) ||
-						downRightVictory(cell)
-					) {
-						gameover = true;
-						await Task.Delay(1000);
-						displayWinner(cell.getState());
-						return;
-					}
+			foreach (Cell cell in cells) {		
+				if (
+					horizontalVictory(cell) ||
+					verticalVictory(cell) ||
+					downLeftVictory(cell) ||
+					downRightVictory(cell)
+				) {
+					gameover = true;
+					displayWinner(cell.getState());
+					return;
 				}
 			}
 		}
 
-		private bool horizontalVictory(Cell cell) {
+		public bool horizontalVictory(Cell cell) {
 			int stateToCheck = cell.getState();
 			if (stateToCheck == 0 || cell.getXCoord() > 3) {
 				return false;
@@ -243,13 +237,12 @@ namespace connectfour_group5 {
 			}
 		}
 
-		private bool verticalVictory(Cell cell) {
+		public bool verticalVictory(Cell cell) {
 			int stateToCheck = cell.getState();
 			if (stateToCheck == 0 || cell.getYCoord() < 3) {
 				return false;
 			}
 			if (
-				// there is an issue where if you fill a colloum it breaks 
 				board.getCell(cell.getXCoord(), cell.getYCoord() - 1).getState() == stateToCheck &&
 				board.getCell(cell.getXCoord(), cell.getYCoord() - 2).getState() == stateToCheck &&
 				board.getCell(cell.getXCoord(), cell.getYCoord() - 3).getState() == stateToCheck
@@ -260,7 +253,7 @@ namespace connectfour_group5 {
 			}
 		}
 
-		private bool downLeftVictory(Cell cell) {
+		public bool downLeftVictory(Cell cell) {
 			int stateToCheck = cell.getState();
 			if (stateToCheck == 0 || cell.getXCoord() < 4 || cell.getYCoord() < 3) {
 				return false;
@@ -276,7 +269,7 @@ namespace connectfour_group5 {
 			}
 		}
 
-		private bool downRightVictory(Cell cell) {
+		public bool downRightVictory(Cell cell) {
 			int stateToCheck = cell.getState();
 			if (stateToCheck == 0 || cell.getXCoord() > 3 || cell.getYCoord() < 3) {
 				return false;
@@ -292,8 +285,18 @@ namespace connectfour_group5 {
 			}
 		}
 
+		public void checkDraw() {
+			foreach (Cell cell in cells) {
+				if (cell.getState() == 0) {
+					return;
+				}
+			}
+			gameover = true;
+			draw = true;
+		}
+
 		public void displayWinner(int player) {
-			formGAMEOVER formGAMEOVER = new formGAMEOVER(this, tform, player, multiplayer, savedGames);
+			formGAMEOVER formGAMEOVER = new formGAMEOVER(this, tform, player, multiplayer, draw, savedGames);
 			formGAMEOVER.Show();
 			this.Hide();
 		}
