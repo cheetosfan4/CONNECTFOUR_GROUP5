@@ -15,18 +15,21 @@ using System.Runtime.Remoting.Channels;
 
 namespace connectfour_group5 {
 	public partial class formGAMEPLAY : Form {
-		private bool switching = false, multiplayer, gameover = false, draw = false;
+		private bool switching = false, multiplayer, gameover = false, draw = false, cellLeaveCalled;
 		private int player = 1;
 		private formTITLE tform;
 		private Board board;
 		private List<Form> savedGames;
 		private List<Cell> cells;
 		private AI ai;
+		private PictureBox currentSender;
+
 		private PictureBox[] column0 = new PictureBox[6], column1 = new PictureBox[6], 
 			column2 = new PictureBox[6], column3 = new PictureBox[6], column4 = new PictureBox[6], 
 			column5 = new PictureBox[6], column6 = new PictureBox[6];
 
 		private PictureBox[][] columns = new PictureBox[7][];
+
 
 		public formGAMEPLAY(formTITLE title, bool multiplayer, List<Form> savedGames) {
 			InitializeComponent();
@@ -85,7 +88,7 @@ namespace connectfour_group5 {
 				checkDraw();
 			}
 
-			
+			cellLeaveCalled = false;
 			
 			//if i made it check the amount after placing the chip it wouldn't switch players upon placing the top chip
 			 //so i made it check the amount beforehand to avoid that
@@ -104,12 +107,13 @@ namespace connectfour_group5 {
 					checkVictory();
 					checkDraw();
 					switchPlayer();
-					cellHover(sender, e);
+					cellHover(currentSender, e);
 				}
 			}
 		}
 
 		private void cellHover(object sender, EventArgs e) {
+			currentSender = sender as PictureBox;
 			if (!gameover) {
 				if (multiplayer) {
 					placeChip(sender, player + 2);
@@ -123,6 +127,7 @@ namespace connectfour_group5 {
 
 		private void cellLeave(object sender, EventArgs e) {
 			placeChip(sender, 0);
+			cellLeaveCalled = true;
 		}
 
 		private void buttonCLOSE_REVIEW_Click(object sender, EventArgs e) {
