@@ -27,9 +27,11 @@ namespace connectfour_group5 {
 			this.formGameplay = formGameplay;
 			this.tform = title;
 			this.savedGames = savedGames;
-			
-			// need to make draws
-			if (winner == 1) 
+
+            readtxtfile();
+
+            // need to make draws
+            if (winner == 1) 
 			{
 				labelWINNER.Text = "PLAYER 1 WINS!";
 				if(!multiplayer)
@@ -61,8 +63,6 @@ namespace connectfour_group5 {
 					writetofile();
 				}
 			}
-
-			readtxtfile();
 		}
 
 		private void buttonTITLE_Click(object sender, EventArgs e) {

@@ -17,6 +17,7 @@ namespace connectfour_group5 {
 	public partial class formGAMEPLAY : Form {
 		private bool switching = false, multiplayer, gameover = false, draw = false, cellLeaveCalled;
 		private int player = 1;
+		private bool aiPlacing = false;
 		private formTITLE tform;
 		private Board board;
 		private List<Form> savedGames;
@@ -68,6 +69,9 @@ namespace connectfour_group5 {
 		//cause it cant click on stuff lol so it won't have a "sender" object
 
 		private async void cellClick(object sender, EventArgs e) {
+			if (aiPlacing) {
+				return;
+			}
 
 			//i added these variables to check the amount of chips in the column BEFORE the new one is placed
 			//if its five, the next one will fill up the column
@@ -100,6 +104,7 @@ namespace connectfour_group5 {
 				cellHover(sender, e);
 
 				if (!multiplayer) {
+					aiPlacing = true;
 					int aiColumn = ai.getOptimalColumn();
 					Random random = new Random();
 					await Task.Delay(random.Next(500, 2000));
@@ -108,6 +113,7 @@ namespace connectfour_group5 {
 					checkDraw();
 					switchPlayer();
 					cellHover(currentSender, e);
+					aiPlacing = false;
 				}
 			}
 		}
@@ -271,7 +277,7 @@ namespace connectfour_group5 {
 
 		public bool downLeftVictory(Cell cell) {
 			int stateToCheck = cell.getState();
-			if (stateToCheck == 0 || cell.getXCoord() < 4 || cell.getYCoord() < 3) {
+			if (stateToCheck == 0 || cell.getXCoord() < 3 || cell.getYCoord() < 3) {
 				return false;
 			}
 			if (

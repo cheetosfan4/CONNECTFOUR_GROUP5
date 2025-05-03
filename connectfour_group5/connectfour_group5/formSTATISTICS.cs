@@ -31,13 +31,19 @@ namespace connectfour_group5
 			string playwin = playerwin.ToString();
 			string playloss = playerloss.ToString();
 			string draw = draws.ToString();
-			labelWINS.Text ="player wins: " + playwin;
-			labelLOSSES.Text = "ai wins: " +playloss;
-			label3.Text = "draws: " + draw;
-			label4.Text = "total games: " + (playerwin + playerloss + draws).ToString();
-			label5.Text = "player win rate: %" + ((double)playerwin / (playerwin + playerloss + draws)).ToString("P2");
-			label6.Text = "ai win rate: %" + ((double)playerloss / (playerwin + playerloss + draws)).ToString("P2");
-			parseline(line);
+			buttonWINS.Text = "Wins: " + playwin;
+			//labelWINS.Text ="Player Wins: " + playwin;
+			buttonLOSSES.Text = "Losses: " + playloss;
+			//labelLOSSES.Text = "AI Wins: " +playloss;
+			buttonDRAWS.Text = "Draws: " + draw;
+			//label3.Text = "Draws: " + draw;
+			buttonGAMES_PLAYED.Text = "Games Played: " + (playerwin + playerloss + draws).ToString();
+            //label4.Text = "Games Played: " + (playerwin + playerloss + draws).ToString();
+			buttonPLAYER_WIN_RATE.Text = "Player Win Rate: " + ((double)playerwin / (playerwin + playerloss + draws)).ToString("P2");
+            //label5.Text = "Player Win Rate: " + ((double)playerwin / (playerwin + playerloss + draws)).ToString("P2");
+			buttonAI_WIN_RATE.Text = "AI Win Rate: " + ((double)playerloss / (playerwin + playerloss + draws)).ToString("P2");
+            //label6.Text = "AI Win Rate: " + ((double)playerloss / (playerwin + playerloss + draws)).ToString("P2");
+            parseline(line);
 		}
 		private void buttonTITLE_Click(object sender, EventArgs e)
 		{

@@ -41,9 +41,17 @@ namespace connectfour_group5 {
 			add2LongVertical();
 			add3LongVertical();
 			add4LongVertical();
-			add2LongRight();
-			add2LongLeft();
-			add3LongRightEnd();
+			//add2LongRight();
+			//add2LongLeft();
+			//add3LongRightEnd();
+
+			add2LongHorizontal();
+			add3LongHorizontal();
+			add4LongHorizontal();
+
+			add2LongDiagonal();
+			add3LongDiagonal();
+			add4LongDiagonal();
 			
 			int bestScore = 0;
 
@@ -67,14 +75,24 @@ namespace connectfour_group5 {
 							Console.WriteLine("Score to compare: " + score);
 							Console.WriteLine("Attempting to remove column...");
 							Console.WriteLine("Size of bestColumns: " + bestColumns.Count);
-							Console.WriteLine("Index of existingScore: " + getFirstIndexOfValue(bestColumns, existingScore));
-							bestColumns.Remove(getKeyFromIndex(bestColumns, getFirstIndexOfValue(bestColumns, existingScore)));
-							Console.WriteLine(
-								"getOptimalColumn: Removed column " +
-								getKeyFromIndex(bestColumns, getFirstIndexOfValue(bestColumns, existingScore)) +
-								" with score " + existingScore + " from bestColumns"
-								);
-						}
+                            int index = getFirstIndexOfValue(bestColumns, existingScore);
+                            //Console.WriteLine("Index of existingScore: " + getFirstIndexOfValue(bestColumns, existingScore));
+                            Console.WriteLine("Index of existingScore: " + index);
+
+							//i was getting an error that index was out of bounds in getkeyfromindex
+                            if (index != -1) {
+                                int key = getKeyFromIndex(bestColumns, index);
+                                bestColumns.Remove(key);
+                                //bestColumns.Remove(getKeyFromIndex(bestColumns, getFirstIndexOfValue(bestColumns, existingScore)));
+                                Console.WriteLine(
+                                   "getOptimalColumn: Removed column " +
+                                   key +
+                                   //getKeyFromIndex(bestColumns, getFirstIndexOfValue(bestColumns, existingScore)) +
+                                   " with score " + existingScore + " from bestColumns"
+                                );
+                            }
+
+                        }
 						if (bestColumns.Count == 0) break;
 					}
 				}
@@ -123,7 +141,10 @@ namespace connectfour_group5 {
 		public void add3LongVertical() {
 			foreach (Cell cell in cells) {
 				if (cell.getYCoord() > 1) {
-					if (
+                    //============
+                    // ai scoring
+                    //============
+                    if (
 						startState(cell, 2) &&
 						matchesState(cell, 2, 0, 1) &&
 						matchesState(cell, 0, 0, 2)
@@ -131,14 +152,28 @@ namespace connectfour_group5 {
 						addToMap(potentialColumns, cell.getXCoord(), 10);
 						Console.WriteLine("3LongVertical: Added column " + cell.getXCoord() + " with score 10 to potentialColumns");
 					}
-				}
+                    //====================
+                    // ai blocking player
+                    //====================
+                    if (
+					    startState(cell, 1) &&
+					    matchesState(cell, 1, 0, 1) &&
+					    matchesState(cell, 0, 0, 2)
+					    ) {
+                        addToMap(potentialColumns, cell.getXCoord(), 5);
+                        Console.WriteLine("3LongVerticalBlock: Added column " + cell.getXCoord() + " with score 5 to potentialColumns");
+                    }
+                }
 			}
 		}
 
 		public void add4LongVertical() {
 			foreach (Cell cell in cells) {
 				if (cell.getYCoord() > 2) {
-					if (
+                    //============
+                    // ai scoring
+                    //============
+                    if (
 						startState(cell, 2) &&
 						matchesState(cell, 2, 0, 1) &&
 						matchesState(cell, 2, 0, 2) &&
@@ -147,64 +182,384 @@ namespace connectfour_group5 {
 						addToMap(potentialColumns, cell.getXCoord(), 1000);
 						Console.WriteLine("4LongVertical: Added column " + cell.getXCoord() + " with score 1000 to potentialColumns");
 					}
-				}
+                    //====================
+                    // ai blocking player
+                    //====================
+                    if (
+					    startState(cell, 1) &&
+					    matchesState(cell, 1, 0, 1) &&
+					    matchesState(cell, 1, 0, 2) &&
+					    matchesState(cell, 0, 0, 3)
+					) {
+                        addToMap(potentialColumns, cell.getXCoord(), 50);
+                        Console.WriteLine("4LongVerticalBlock: Added column " + cell.getXCoord() + " with score 50 to potentialColumns");
+                    }
+                }
 			}
 		}
 
-		public void add2LongRight() {
+		public void add4LongHorizontal() {
 			foreach (Cell cell in cells) {
 				int x = cell.getXCoord();
-				if (x < 6) {
-					if (
-						startState(cell, 2) &&
-						matchesState(cell, 0, 1, 0) && 
-						checkPlatform(cell, 1, -1)
-						) {
-						addToMap(potentialColumns, x + 1, 1);
-						Console.WriteLine("2LongRight: Added column " + (x + 1) + " with score 1 to potentialColumns");
-					}
+                //============
+                // ai scoring
+                //============
+                //checks going right
+                if (x < 4 && startState(cell, 2)) {
+                    if (matchesState(cell, 2, 1, 0) && matchesState(cell, 2, 2, 0) && matchesState(cell, 0, 3, 0) && checkPlatform(cell, 3, -1)) {
+                        addToMap(potentialColumns, (x + 3), 1000);
+                        Console.WriteLine("4LongRightEnd: Added column " + (x + 3) + " with score 1000 to potentialColumns");
+                    }
+                }
+                //checks going left
+                if (x > 2 && startState(cell, 2)) {
+                    if (matchesState(cell, 2, -1, 0) && matchesState(cell, 2, -2, 0) && matchesState(cell, 0, -3, 0) && checkPlatform(cell, -3, -1)) {
+                        addToMap(potentialColumns, (x - 3), 1000);
+                        Console.WriteLine("4LongLeftEnd: Added column " + (x - 3) + " with score 1000 to potentialColumns");
+                    }
+                }
+                //X = chip, 0 = empty
+                //X0XX
+                if (x > 0 && x < 5 && startState(cell, 0)) {
+                    //checks chip to left, chip to right, chip 2 to the right
+                    if (matchesState(cell, 2, -1, 0) && matchesState(cell, 2, 1, 0) && matchesState(cell, 2, 2, 0) && checkPlatform(cell, 0, -1)) {
+                        addToMap(potentialColumns, x, 1000);
+                        Console.WriteLine("4LongX0XX: Added column " + x + " with score 1000 to potentialColumns");
+                    }
+                }
+                //XX0X
+                if (x > 1 && x < 6 && startState(cell, 0)) {
+                    //checks chip to right, chip to left, chip 2 to the left
+                    if (matchesState(cell, 2, 1, 0) && matchesState(cell, 2, -1, 0) && matchesState(cell, 2, -2, 0) && checkPlatform(cell, 0, -1)) {
+                        addToMap(potentialColumns, x, 1000);
+                        Console.WriteLine("4LongXX0X: Added column " + x + " with score 1000 to potentialColumns");
+                    }
+                }
+                //====================
+                // ai blocking player
+                //====================
+                //checks going right
+                if (x < 4 && startState(cell, 1)) {
+                    if (matchesState(cell, 1, 1, 0) && matchesState(cell, 1, 2, 0) && matchesState(cell, 0, 3, 0) && checkPlatform(cell, 3, -1)) {
+                        addToMap(potentialColumns, (x + 3), 50);
+                        Console.WriteLine("4LongRightEndBlock: Added column " + (x + 3) + " with score 50 to potentialColumns");
+                    }
+                }
+                //checks going left
+                if (x > 2 && startState(cell, 1)) {
+                    if (matchesState(cell, 1, -1, 0) && matchesState(cell, 1, -2, 0) && matchesState(cell, 0, -3, 0) && checkPlatform(cell, -3, -1)) {
+                        addToMap(potentialColumns, (x - 3), 50);
+                        Console.WriteLine("4LongLeftEndBlock: Added column " + (x - 3) + " with score 50 to potentialColumns");
+                    }
+                }
+				//X = chip, 0 = empty
+				//X0XX
+				if (x > 0 && x < 5 && startState(cell, 0)) {
+					//checks chip to left, chip to right, chip 2 to the right
+					if (matchesState(cell, 1, -1, 0) && matchesState(cell, 1, 1, 0) && matchesState(cell, 1, 2, 0) && checkPlatform(cell, 0, -1)) {
+                        addToMap(potentialColumns, x, 50);
+                        Console.WriteLine("4LongX0XXBlock: Added column " + x + " with score 50 to potentialColumns");
+                    }
 				}
-			}
+				//XX0X
+				if (x > 1 && x < 6 && startState(cell, 0)) {
+					//checks chip to right, chip to left, chip 2 to the left
+					if (matchesState(cell, 1, 1, 0) && matchesState(cell, 1, -1, 0) && matchesState(cell, 1, -2, 0) && checkPlatform(cell, 0, -1)) {
+                        addToMap(potentialColumns, x, 50);
+                        Console.WriteLine("4LongXX0XBlock: Added column " + x + " with score 50 to potentialColumns");
+                    }
+				}
+
+            }
 		}
 
-		public void add2LongLeft() {
+		public void add3LongHorizontal() {
 			foreach (Cell cell in cells) {
 				int x = cell.getXCoord();
-				if (x > 0) {
-					if (
-						startState(cell, 2) &&
-						matchesState(cell, 0, -1, 0) && 
-						checkPlatform(cell, -1, -1)
-						) {
-						addToMap(potentialColumns, x - 1, 1);
-						Console.WriteLine("2LongLeft: Added column " + (x - 1) + " with score 1 to potentialColumns");
+				//============
+				// ai scoring
+				//============
+				//checks going right
+				if (x < 5 && startState(cell, 2)) {
+                    if (matchesState(cell, 2, 1, 0) && matchesState(cell, 0, 2, 0) && checkPlatform(cell, 2, -1)) {
+                        addToMap(potentialColumns, (x + 2), 10);
+                        Console.WriteLine("3LongRightEnd: Added column " + (x + 2) + " with score 10 to potentialColumns");
+                    }
+                }
+				//checks going left
+				if (x > 1 && startState(cell, 2)) {
+					if (matchesState(cell, 2, -1, 0) && matchesState(cell, 0, -2, 0) && checkPlatform(cell, -2, -1)) {
+						addToMap(potentialColumns, (x - 2), 10);
+						Console.WriteLine("3LongLeftEnd: Added column " + (x - 2) + " with score 10 to potentialColumns");
 					}
 				}
-			}
+                //X = chip, 0 = empty
+                //X0X
+                if (x > 0 && x < 6 && startState(cell, 0)) {
+                    //checks chip to left, chip to right
+                    if (matchesState(cell, 2, -1, 0) && matchesState(cell, 2, 1, 0) && checkPlatform(cell, 0, -1)) {
+                        addToMap(potentialColumns, x, 10);
+                        Console.WriteLine("3LongX0X: Added column " + x + " with score 10 to potentialColumns");
+                    }
+                }
+                //====================
+                // ai blocking player
+                //====================
+                if (x < 5 && startState(cell, 1)) {
+                    if (matchesState(cell, 1, 1, 0) && matchesState(cell, 0, 2, 0) && checkPlatform(cell, 2, -1)) {
+                        addToMap(potentialColumns, (x + 2), 5);
+                        Console.WriteLine("3LongRightEndBlock: Added column " + (x + 2) + " with score 5 to potentialColumns");
+                    }
+                }
+                //checks going left
+                if (x > 1 && startState(cell, 1)) {
+                    if (matchesState(cell, 1, -1, 0) && matchesState(cell, 0, -2, 0) && checkPlatform(cell, -2, -1)) {
+                        addToMap(potentialColumns, (x - 2), 5);
+                        Console.WriteLine("3LongLeftEndBlock: Added column " + (x - 2) + " with score 5 to potentialColumns");
+                    }
+                }
+				//X = chip, 0 = empty
+				//X0X
+				if (x > 0 && x < 6 && startState(cell, 0)) {
+					//checks chip to left, chip to right
+					if (matchesState(cell, 1, -1, 0) && matchesState(cell, 1, 1, 0) && checkPlatform(cell, 0, -1)) {
+                        addToMap(potentialColumns, x, 5);
+                        Console.WriteLine("3LongX0XBlock: Added column " + x + " with score 5 to potentialColumns");
+                    }
+				}
+            }
 		}
 
-		public void add3LongRightEnd() {
+		public void add2LongHorizontal() {
 			foreach (Cell cell in cells) {
 				int x = cell.getXCoord();
-				if (x < 5) {
-					if (
-						startState(cell, 2) &&
-						matchesState(cell, 2, 1, 0) && 
-						matchesState(cell, 0, 2, 0) &&
-						checkPlatform(cell, 2, -1)
-						) {
-						addToMap(potentialColumns, x + 2, 10);
-						Console.WriteLine("3LongRightEnd: Added column " + (x + 2) + " with score 10 to potentialColumns");
-					}
-				}
-			}
+				//checks going right
+                if (x < 6) {
+                    if (
+                        startState(cell, 2) &&
+                        matchesState(cell, 0, 1, 0) &&
+                        checkPlatform(cell, 1, -1)
+                        ) {
+                        addToMap(potentialColumns, (x + 1), 1);
+                        Console.WriteLine("2LongRightEnd: Added column " + (x + 1) + " with score 1 to potentialColumns");
+                    }
+                }
+				//checks going left
+                if (x > 0) {
+                    if (
+                        startState(cell, 2) &&
+                        matchesState(cell, 0, -1, 0) &&
+                        checkPlatform(cell, -1, -1)
+                        ) {
+                        addToMap(potentialColumns, (x - 1), 1);
+                        Console.WriteLine("2LongLeftEnd: Added column " + (x - 1) + " with score 1 to potentialColumns");
+                    }
+                }
+            }
 		}
+
+		public void add2LongDiagonal() {
+			foreach (Cell cell in cells) {
+				int x = cell.getXCoord();
+				int y = cell.getYCoord();
+                //downright
+				if (x < 6 && y < 5 && startState(cell, 2) && matchesState(cell, 0, 1, -1) && checkPlatform(cell, 1, -2)) {
+                    addToMap(potentialColumns, (x + 1), 1);
+                    Console.WriteLine("2LongDownRight: Added column " + (x + 1) + " with score 1 to potentialColumns");
+                }
+                //downleft
+                if (x > 0 && y < 5 && startState(cell, 2) && matchesState(cell, 0, -1, -1) && checkPlatform(cell, -1, -2)) {
+                    addToMap(potentialColumns, (x - 1), 1);
+                    Console.WriteLine("2LongDownLeft: Added column " + (x - 1) + " with score 1 to potentialColumns");
+                }
+                //upright
+                if (x < 6 && y > 0 && startState(cell, 2) && matchesState(cell, 0, 1, 1) && checkPlatform(cell, 1, -1)) {
+                    addToMap(potentialColumns, (x + 1), 1);
+                    Console.WriteLine("2LongUpRight: Added column " + (x + 1) + " with score 1 to potentialColumns");
+                }
+                //upleft
+                if (x > 0 && y > 0 && startState(cell, 2) && matchesState(cell, 0, -1, 1) && checkPlatform(cell, -1, -1)) {
+                    addToMap(potentialColumns, (x - 1), 1);
+                    Console.WriteLine("2LongUpLeft: Added column " + (x - 1) + " with score 1 to potentialColumns");
+                }
+            }
+		}
+
+		public void add3LongDiagonal() {
+			foreach (Cell cell in cells) {
+				int x = cell.getXCoord();
+				int y = cell.getYCoord();
+                //====================
+                // ai scoring
+                //====================
+                //downright
+                if (y < 4 && x < 5 && startState(cell, 2) && matchesState(cell, 2, 1, -1) && matchesState(cell, 0, 2, -2) && checkPlatform(cell, 2, -3)) {
+                    addToMap(potentialColumns, (x + 2), 10);
+                    Console.WriteLine("3LongDownRight: Added column " + (x + 2) + " with score 10 to potentialColumns");
+                }
+                //downleft
+                if (y < 4 && x > 1 && startState(cell, 2) && matchesState(cell, 2, -1, -1) && matchesState(cell, 0, -2, -2) && checkPlatform(cell, -2, -3)) {
+                    addToMap(potentialColumns, (x - 2), 10);
+                    Console.WriteLine("3LongDownLeft: Added column " + (x - 2) + " with score 10 to potentialColumns");
+                }
+                //upright
+                if (y > 1 && x < 5 && startState(cell, 2) && matchesState(cell, 2, 1, 1) && matchesState(cell, 0, 2, 2) && checkPlatform(cell, 2, 1)) {
+                    addToMap(potentialColumns, (x + 2), 10);
+                    Console.WriteLine("3LongUpRight: Added column " + (x + 2) + " with score 10 to potentialColumns");
+                }
+                //upleft
+                if (y > 1 && x > 1 && startState(cell, 2) && matchesState(cell, 2, -1, 1) && matchesState(cell, 0, -2, 2) && checkPlatform(cell, -2, 1)) {
+                    addToMap(potentialColumns, (x - 2), 10);
+                    Console.WriteLine("3LongUpLeft: Added column " + (x - 2) + " with score 10 to potentialColumns");
+                }
+                //posX0X
+                if (y > 0 && y < 5 && x < 6 && x > 0 && startState(cell, 0) && matchesState(cell, 2, -1, -1) && matchesState(cell, 2, 1, 1) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 10);
+                    Console.WriteLine("3LongPosX0X: Added column " + x + " with score 10 to potentialColumns");
+                }
+                //negX0X
+                if (y > 0 && y < 5 && x < 6 && x > 0 && startState(cell, 0) && matchesState(cell, 2, -1, 1) && matchesState(cell, 2, 1, -1) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 10);
+                    Console.WriteLine("3LongNegX0X: Added column " + x + " with score 10 to potentialColumns");
+                }
+                //====================
+                // ai blocking player
+                //====================
+                //downright
+                if (y < 4 && x < 5 && startState(cell, 1) && matchesState(cell, 1, 1, -1) && matchesState(cell, 0, 2, -2) && checkPlatform(cell, 2, -3)) {
+                    addToMap(potentialColumns, (x + 2), 5);
+                    Console.WriteLine("3LongDownRightBlock: Added column " + (x + 2) + " with score 5 to potentialColumns");
+                }
+                //downleft
+                if (y < 4 && x > 1 && startState(cell, 1) && matchesState(cell, 1, -1, -1) && matchesState(cell, 0, -2, -2) && checkPlatform(cell, -2, -3)) {
+                    addToMap(potentialColumns, (x - 2), 5);
+                    Console.WriteLine("3LongDownLeftBlock: Added column " + (x - 2) + " with score 5 to potentialColumns");
+                }
+                //upright
+                if (y > 1 && x < 5 && startState(cell, 1) && matchesState(cell, 1, 1, 1) && matchesState(cell, 0, 2, 2) && checkPlatform(cell, 2, 1)) {
+                    addToMap(potentialColumns, (x + 2), 5);
+                    Console.WriteLine("3LongUpRightBlock: Added column " + (x + 2) + " with score 5 to potentialColumns");
+                }
+                //upleft
+                if (y > 1 && x > 1 && startState(cell, 1) && matchesState(cell, 1, -1, 1) && matchesState(cell, 0, -2, 2) && checkPlatform(cell, -2, 1)) {
+                    addToMap(potentialColumns, (x - 2), 5);
+                    Console.WriteLine("3LongUpLeftBlock: Added column " + (x - 2) + " with score 5 to potentialColumns");
+                }
+                //posX0X
+                if (y > 0 && y < 5 && x < 6 && x > 0 && startState(cell, 0) && matchesState(cell, 1, -1, -1) && matchesState(cell, 1, 1, 1) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 5);
+                    Console.WriteLine("3LongPosX0XBlock: Added column " + x + " with score 5 to potentialColumns");
+                }
+                //negX0X
+                if (y > 0 && y < 5 && x < 6 && x > 0 && startState(cell, 0) && matchesState(cell, 1, -1, 1) && matchesState(cell, 1, 1, -1) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 5);
+                    Console.WriteLine("3LongNegX0XBlock: Added column " + x + " with score 5 to potentialColumns");
+                }
+            }
+        }
+
+		public void add4LongDiagonal() {
+            foreach (Cell cell in cells) {
+                int x = cell.getXCoord();
+                int y = cell.getYCoord();
+                //====================
+                // ai scoring
+                //====================
+                //downright
+                if (y < 3 && x < 4 && startState(cell, 2) && matchesState(cell, 2, 1, -1) && matchesState(cell, 2, 2, -2) && matchesState(cell, 0, 3, -3) && checkPlatform(cell, 3, -4)) {
+					addToMap(potentialColumns, (x + 3), 1000);
+                    Console.WriteLine("4LongDownRight: Added column " + (x+3) + " with score 1000 to potentialColumns");
+                }
+                //downleft
+                if (y < 3 && x > 2 && startState(cell, 2) && matchesState(cell, 2, -1, -1) && matchesState(cell, 2, -2, -2) && matchesState(cell, 0, -3, -3) && checkPlatform(cell, -3, -4)) {
+                    addToMap(potentialColumns, (x - 3), 1000);
+                    Console.WriteLine("4LongDownLeft: Added column " + (x - 3) + " with score 1000 to potentialColumns");
+                }
+                //upright
+                if (y > 2 && x < 4 && startState(cell, 2) && matchesState(cell, 2, 1, 1) && matchesState(cell, 2, 2, 2) && matchesState(cell, 0, 3, 3) && checkPlatform(cell, 3, 2)) {
+                    addToMap(potentialColumns, (x + 3), 1000);
+                    Console.WriteLine("4LongUpRight: Added column " + (x + 3) + " with score 1000 to potentialColumns");
+                }
+                //upleft
+                if (y > 2 && x > 2 && startState(cell, 2) && matchesState(cell, 2, -1, 1) && matchesState(cell, 2, -2, 2) && matchesState(cell, 0, -3, 3) && checkPlatform(cell, -3, 2)) {
+                    addToMap(potentialColumns, (x - 3), 1000);
+                    Console.WriteLine("4LongUpLeft: Added column " + (x - 3) + " with score 1000 to potentialColumns");
+                }
+                //posX0XX
+                if (y > 1 && y < 5 && x > 0 && x < 5 && startState(cell, 0) && matchesState(cell, 2, -1, -1) && matchesState(cell, 2, 1, 1) && matchesState(cell, 2, 2, 2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 1000);
+                    Console.WriteLine("4LongPosX0XX: Added column " + x + " with score 1000 to potentialColumns");
+                }
+                //posXX0X
+                if (y > 0 && y < 4 && x > 1 && x < 6 && startState(cell, 0) && matchesState(cell, 2, 1, 1) && matchesState(cell, 2, -1, -1) && matchesState(cell, 2, -2, -2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 1000);
+                    Console.WriteLine("4LongPosXX0X: Added column " + x + " with score 1000 to potentialColumns");
+                }
+                //negX0XX
+                if (y > 0 && y < 4 && x > 0 && x < 5 && startState(cell, 0) && matchesState(cell, 2, -1, 1) && matchesState(cell, 2, 1, -1) && matchesState(cell, 2, 2, -2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 1000);
+                    Console.WriteLine("4LongNegX0XX: Added column " + x + " with score 1000 to potentialColumns");
+                }
+                //negXX0X
+                if (y > 1 && y < 5 && x > 1 && x < 6 && startState(cell, 0) && matchesState(cell, 2, 1, -1) && matchesState(cell, 2, -1, 1) && matchesState(cell, 2, -2, 2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 1000);
+                    Console.WriteLine("4LongNegXX0X: Added column " + x + " with score 1000 to potentialColumns");
+                }
+                //====================
+                // ai blocking player
+                //====================
+                //downright
+                if (y < 3 && x < 4 && startState(cell, 1) && matchesState(cell, 1, 1, -1) && matchesState(cell, 1, 2, -2) && matchesState(cell, 0, 3, -3) && checkPlatform(cell, 3, -4)) {
+                    addToMap(potentialColumns, (x + 3), 50);
+                    Console.WriteLine("4LongDownRightBlock: Added column " + (x + 3) + " with score 50 to potentialColumns");
+                }
+                //downleft
+                if (y < 3 && x > 2 && startState(cell, 1) && matchesState(cell, 1, -1, -1) && matchesState(cell, 1, -2, -2) && matchesState(cell, 0, -3, -3) && checkPlatform(cell, -3, -4)) {
+                    addToMap(potentialColumns, (x - 3), 50);
+                    Console.WriteLine("4LongDownLeftBlock: Added column " + (x - 3) + " with score 50 to potentialColumns");
+                }
+                //upright
+                if (y > 2 && x < 4 && startState(cell, 1) && matchesState(cell, 1, 1, 1) && matchesState(cell, 1, 2, 2) && matchesState(cell, 0, 3, 3) && checkPlatform(cell, 3, 2)) {
+                    addToMap(potentialColumns, (x + 3), 50);
+                    Console.WriteLine("4LongUpRightBlock: Added column " + (x + 3) + " with score 50 to potentialColumns");
+                }
+                //upleft
+                if (y > 2 && x > 2 && startState(cell, 1) && matchesState(cell, 1, -1, 1) && matchesState(cell, 1, -2, 2) && matchesState(cell, 0, -3, 3) && checkPlatform(cell, -3, 2)) {
+                    addToMap(potentialColumns, (x - 3), 50);
+                    Console.WriteLine("4LongUpLeftBlock: Added column " + (x - 3) + " with score 50 to potentialColumns");
+                }
+                //posX0XX
+                if (y > 1 && y < 5 && x > 0 && x < 5 && startState(cell, 0) && matchesState(cell, 1, -1, -1) && matchesState(cell, 1, 1, 1) && matchesState(cell, 1, 2, 2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 50);
+                    Console.WriteLine("4LongPosX0XXBlock: Added column " + x + " with score 50 to potentialColumns");
+                }
+                //posXX0X
+                if (y > 0 && y < 4 && x > 1 && x < 6 && startState(cell, 0) && matchesState(cell, 1, 1, 1) && matchesState(cell, 1, -1, -1) && matchesState(cell, 1, -2, -2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 50);
+                    Console.WriteLine("4LongPosXX0XBlock: Added column " + x + " with score 50 to potentialColumns");
+                }
+                //negX0XX
+                if (y > 0 && y < 4 && x > 0 && x < 5 && startState(cell, 0) && matchesState(cell, 1, -1, 1) && matchesState(cell, 1, 1, -1) && matchesState(cell, 1, 2, -2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 50);
+                    Console.WriteLine("4LongNegX0XXBlock: Added column " + x + " with score 50 to potentialColumns");
+                }
+                //negXX0X
+                if (y > 1 && y < 5 && x > 1 && x < 6 && startState(cell, 0) && matchesState(cell, 1, 1, -1) && matchesState(cell, 1, -1, 1) && matchesState(cell, 1, -2, 2) && checkPlatform(cell, 0, -1)) {
+                    addToMap(potentialColumns, x, 50);
+                    Console.WriteLine("4LongNegXX0XBlock: Added column " + x + " with score 50 to potentialColumns");
+                }
+            }
+        }
 
 		// Helper functions
 
 		public bool checkPlatform(Cell cell, int xOffset, int yOffset) {
 			// if the cell is in the bottom row, done checking
 			// otherwise, check to see if there is a chip to place on
+            if ((cell.getYCoord() - yOffset) > 5) {
+                Console.WriteLine("out of bounds error\n");
+                return true;
+            }
 			return cell.getYCoord() == 5 || chipPresent(cell, xOffset, yOffset);
 		}
 
