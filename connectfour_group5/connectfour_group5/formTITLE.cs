@@ -1,4 +1,10 @@
-﻿using System;
+﻿//====================================================================================================
+//Author        :       Group 5
+//Date          :       05-04-2025
+//Description   :       CIS153 Final Project; Connect four.
+//====================================================================================================
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
