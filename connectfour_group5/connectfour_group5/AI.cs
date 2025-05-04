@@ -100,7 +100,7 @@ namespace connectfour_group5 {
 		// columns that would:
 
 		// create a line of 4 (AI victory) - score 1000
-		// block a line of 3 by placing a 4th chip (prevent a player victory) - score 50
+		// block a line of 3 by placing a 4th chip (prevent a player victory) - score 100
 
 		// create a line of 3 - score 10
 		// block a line of 2 by placing a 3rd chip - score 5
@@ -173,8 +173,8 @@ namespace connectfour_group5 {
 						matchesState(cell, 1, 0, 2) &&
 						matchesState(cell, 0, 0, 3)
 					) {
-						addToMap(potentialColumns, cell.getXCoord(), 50);
-						Console.WriteLine("4LongVerticalBlock: Added column " + cell.getXCoord() + " with score 50 to potentialColumns");
+						addToMap(potentialColumns, cell.getXCoord(), 100);
+						Console.WriteLine("4LongVerticalBlock: Added column " + cell.getXCoord() + " with score 100 to potentialColumns");
 					}
 				}
 			}
@@ -223,15 +223,15 @@ namespace connectfour_group5 {
 				//checks going right
 				if (x < 4 && startState(cell, 1)) {
 					if (matchesState(cell, 1, 1, 0) && matchesState(cell, 1, 2, 0) && matchesState(cell, 0, 3, 0) && checkPlatform(cell, 3, -1)) {
-						addToMap(potentialColumns, (x + 3), 50);
-						Console.WriteLine("4LongRightEndBlock: Added column " + (x + 3) + " with score 50 to potentialColumns");
+						addToMap(potentialColumns, (x + 3), 100);
+						Console.WriteLine("4LongRightEndBlock: Added column " + (x + 3) + " with score 100 to potentialColumns");
 					}
 				}
 				//checks going left
 				if (x > 2 && startState(cell, 1)) {
 					if (matchesState(cell, 1, -1, 0) && matchesState(cell, 1, -2, 0) && matchesState(cell, 0, -3, 0) && checkPlatform(cell, -3, -1)) {
-						addToMap(potentialColumns, (x - 3), 50);
-						Console.WriteLine("4LongLeftEndBlock: Added column " + (x - 3) + " with score 50 to potentialColumns");
+						addToMap(potentialColumns, (x - 3), 100);
+						Console.WriteLine("4LongLeftEndBlock: Added column " + (x - 3) + " with score 100 to potentialColumns");
 					}
 				}
 				//X = chip, 0 = empty
@@ -239,16 +239,16 @@ namespace connectfour_group5 {
 				if (x > 0 && x < 5 && startState(cell, 0)) {
 					//checks chip to left, chip to right, chip 2 to the right
 					if (matchesState(cell, 1, -1, 0) && matchesState(cell, 1, 1, 0) && matchesState(cell, 1, 2, 0) && checkPlatform(cell, 0, -1)) {
-						addToMap(potentialColumns, x, 50);
-						Console.WriteLine("4LongX0XXBlock: Added column " + x + " with score 50 to potentialColumns");
+						addToMap(potentialColumns, x, 100);
+						Console.WriteLine("4LongX0XXBlock: Added column " + x + " with score 100 to potentialColumns");
 					}
 				}
 				//XX0X
 				if (x > 1 && x < 6 && startState(cell, 0)) {
 					//checks chip to right, chip to left, chip 2 to the left
 					if (matchesState(cell, 1, 1, 0) && matchesState(cell, 1, -1, 0) && matchesState(cell, 1, -2, 0) && checkPlatform(cell, 0, -1)) {
-						addToMap(potentialColumns, x, 50);
-						Console.WriteLine("4LongXX0XBlock: Added column " + x + " with score 50 to potentialColumns");
+						addToMap(potentialColumns, x, 100);
+						Console.WriteLine("4LongXX0XBlock: Added column " + x + " with score 100 to potentialColumns");
 					}
 				}
 
@@ -485,43 +485,43 @@ namespace connectfour_group5 {
 				//====================
 				//downright
 				if (y < 3 && x < 4 && startState(cell, 1) && matchesState(cell, 1, 1, -1) && matchesState(cell, 1, 2, -2) && matchesState(cell, 0, 3, -3) && checkPlatform(cell, 3, -4)) {
-					addToMap(potentialColumns, (x + 3), 50);
-					Console.WriteLine("4LongDownRightBlock: Added column " + (x + 3) + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, (x + 3), 100);
+					Console.WriteLine("4LongDownRightBlock: Added column " + (x + 3) + " with score 100 to potentialColumns");
 				}
 				//downleft
 				if (y < 3 && x > 2 && startState(cell, 1) && matchesState(cell, 1, -1, -1) && matchesState(cell, 1, -2, -2) && matchesState(cell, 0, -3, -3) && checkPlatform(cell, -3, -4)) {
-					addToMap(potentialColumns, (x - 3), 50);
-					Console.WriteLine("4LongDownLeftBlock: Added column " + (x - 3) + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, (x - 3), 100);
+					Console.WriteLine("4LongDownLeftBlock: Added column " + (x - 3) + " with score 100 to potentialColumns");
 				}
 				//upright
 				if (y > 2 && x < 4 && startState(cell, 1) && matchesState(cell, 1, 1, 1) && matchesState(cell, 1, 2, 2) && matchesState(cell, 0, 3, 3) && checkPlatform(cell, 3, 2)) {
-					addToMap(potentialColumns, (x + 3), 50);
-					Console.WriteLine("4LongUpRightBlock: Added column " + (x + 3) + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, (x + 3), 100);
+					Console.WriteLine("4LongUpRightBlock: Added column " + (x + 3) + " with score 100 to potentialColumns");
 				}
 				//upleft
 				if (y > 2 && x > 2 && startState(cell, 1) && matchesState(cell, 1, -1, 1) && matchesState(cell, 1, -2, 2) && matchesState(cell, 0, -3, 3) && checkPlatform(cell, -3, 2)) {
-					addToMap(potentialColumns, (x - 3), 50);
-					Console.WriteLine("4LongUpLeftBlock: Added column " + (x - 3) + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, (x - 3), 100);
+					Console.WriteLine("4LongUpLeftBlock: Added column " + (x - 3) + " with score 100 to potentialColumns");
 				}
 				//+X0XX
 				if (y > 1 && y < 5 && x > 0 && x < 5 && startState(cell, 0) && matchesState(cell, 1, -1, -1) && matchesState(cell, 1, 1, 1) && matchesState(cell, 1, 2, 2) && checkPlatform(cell, 0, -1)) {
-					addToMap(potentialColumns, x, 50);
-					Console.WriteLine("4Long/X0XXBlock: Added column " + x + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, x, 100);
+					Console.WriteLine("4Long/X0XXBlock: Added column " + x + " with score 100 to potentialColumns");
 				}
 				//+XX0X
 				if (y > 0 && y < 4 && x > 1 && x < 6 && startState(cell, 0) && matchesState(cell, 1, 1, 1) && matchesState(cell, 1, -1, -1) && matchesState(cell, 1, -2, -2) && checkPlatform(cell, 0, -1)) {
-					addToMap(potentialColumns, x, 50);
-					Console.WriteLine("4Long/XX0XBlock: Added column " + x + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, x, 100);
+					Console.WriteLine("4Long/XX0XBlock: Added column " + x + " with score 100 to potentialColumns");
 				}
 				//-X0XX
 				if (y > 0 && y < 4 && x > 0 && x < 5 && startState(cell, 0) && matchesState(cell, 1, -1, 1) && matchesState(cell, 1, 1, -1) && matchesState(cell, 1, 2, -2) && checkPlatform(cell, 0, -1)) {
-					addToMap(potentialColumns, x, 50);
-					Console.WriteLine("4Long\\X0XXBlock: Added column " + x + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, x, 100);
+					Console.WriteLine("4Long\\X0XXBlock: Added column " + x + " with score 100 to potentialColumns");
 				}
 				//-XX0X
 				if (y > 1 && y < 5 && x > 1 && x < 6 && startState(cell, 0) && matchesState(cell, 1, 1, -1) && matchesState(cell, 1, -1, 1) && matchesState(cell, 1, -2, 2) && checkPlatform(cell, 0, -1)) {
-					addToMap(potentialColumns, x, 50);
-					Console.WriteLine("4Long\\XX0XBlock: Added column " + x + " with score 50 to potentialColumns");
+					addToMap(potentialColumns, x, 100);
+					Console.WriteLine("4Long\\XX0XBlock: Added column " + x + " with score 100 to potentialColumns");
 				}
 			}
 		}
