@@ -9,6 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//-------------------------------------------------------------------------------------------------------
+// Names: Marc McLennan, Jacob Young, Austin Thornton
+// Date:  05/04/2025
+// Desc:  The singleplayer AI that serves one purpose - find the best column to place the next chip in,
+//        given a variety of factors
+//-------------------------------------------------------------------------------------------------------
+
 namespace connectfour_group5 {
 	internal class AI {
 		private Board board;

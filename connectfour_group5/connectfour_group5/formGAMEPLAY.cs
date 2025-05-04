@@ -13,6 +13,12 @@ using System.Xml.Linq;
 using System.Threading;
 using System.Runtime.Remoting.Channels;
 
+//----------------------------------------------------------------------------
+// Names: Marc McLennan, Jacob Young, Austin Thornton
+// Date:  05/04/2025
+// Desc:  The gameplay form covers both singleplayer and multiplayer games
+//----------------------------------------------------------------------------
+
 namespace connectfour_group5 {
 	public partial class formGAMEPLAY : Form {
 		private bool switching = false, multiplayer, gameover = false, draw = false, cellLeaveCalled;

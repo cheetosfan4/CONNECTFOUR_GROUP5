@@ -7,6 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//----------------------------------------------------------------------------------------------
+// Names: Marc McLennan, Jacob Young, Austin Thornton
+// Date:  05/04/2025
+// Desc:  Contains all information stored in each board, including initial setup and cells
+//----------------------------------------------------------------------------------------------
+
 namespace connectfour_group5 {
 	internal class Board {
 		private List<Cell> cells;
@@ -44,7 +50,7 @@ namespace connectfour_group5 {
 			}
 			//sets the state for the cell above the current top cell in the selected column
 
-			//i made it so it only runs this loop if player1/player2 place a chip
+			//this only runs if player1/player2 places a chip
 			//so for the preview chips it still calculates the amount of chips in a column it just doesn't actually update any cells
 			if (player == 1 || player == 2) {
 				for (int i = 0; i < cells.Count; i++) {

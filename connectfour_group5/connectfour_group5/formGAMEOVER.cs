@@ -9,6 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//----------------------------------------------------------------------------------------------
+// Names: Marc McLennan, Jacob Young, Austin Thornton
+// Date:  05/04/2025
+// Desc:  The gameover form is shown when either player wins or if there is a draw,
+//        and provides options to continue from there
+//----------------------------------------------------------------------------------------------
+
 namespace connectfour_group5 {
 	public partial class formGAMEOVER : Form {
 
