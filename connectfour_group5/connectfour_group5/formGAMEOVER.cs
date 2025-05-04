@@ -29,41 +29,54 @@ namespace connectfour_group5 {
 			this.savedGames = savedGames;
 
             readtxtfile();
+			buttonGAMES.Text = "Games: " + (playerwin + playerloss + draws).ToString();
+            buttonWINS.Text = "Wins: " + playerwin;
+			buttonLOSSES.Text = "Losses: " + playerloss;
+			buttonDRAWS.Text = "Draws: " + draws;
+			buttonWINPCT.Text = "Win%: " + ((double)playerwin / (playerwin + playerloss + draws)).ToString("P2");
+			buttonLOSEPCT.Text = "Loss%: " + ((double)playerloss / (playerwin + playerloss + draws)).ToString("P2");
 
             // need to make draws
-            if (winner == 1) 
-			{
-				labelWINNER.Text = "PLAYER 1 WINS!";
-				if(!multiplayer)
-				{
+            if (winner == 1) {
+				buttonWINNER.Text = "PLAYER 1 WINS!";
+				//labelWINNER.Text = "PLAYER 1 WINS!";
+				if (!multiplayer) {
 					playerwin++;
 					writetofile();
 				}
 
-			} 
-			else if (winner == 2) 
-			{
-				if (!multiplayer)
-				{
-					labelWINNER.Text = "COMPUTER WINS!";
+			}
+			else if (winner == 2) {
+				if (!multiplayer) {
+					buttonWINNER.Text = "COMPUTER WINS!";
+					//labelWINNER.Text = "COMPUTER WINS!";
 					playerloss++;
 					writetofile();
 
-				} 
-				else 
-				{
-					labelWINNER.Text = "PLAYER 2 WINS!";
+				}
+				else {
+					buttonWINNER.Text = "PLAYER 2 WINS!";
+					//labelWINNER.Text = "PLAYER 2 WINS!";
 				}
 			}
-			
-			if (draw) {
-				labelWINNER.Text = "DRAW!";
+			else {
+				buttonWINNER.Text = "DRAW!";
+				//labelWINNER.Text = "DRAW!";
 				if (!multiplayer) {
 					draws++;
 					writetofile();
 				}
 			}
-		}
+
+            readtxtfile();
+            buttonGAMES.Text = "Games: " + (playerwin + playerloss + draws).ToString();
+            buttonWINS.Text = "Wins: " + playerwin;
+            buttonLOSSES.Text = "Losses: " + playerloss;
+            buttonDRAWS.Text = "Draws: " + draws;
+            buttonWINPCT.Text = "Win%: " + ((double)playerwin / (playerwin + playerloss + draws)).ToString("P2");
+            buttonLOSEPCT.Text = "Loss%: " + ((double)playerloss / (playerwin + playerloss + draws)).ToString("P2");
+
+        }
 
 		private void buttonTITLE_Click(object sender, EventArgs e) {
 			//this.Hide();

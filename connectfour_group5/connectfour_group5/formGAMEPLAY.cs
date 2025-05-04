@@ -88,8 +88,8 @@ namespace connectfour_group5 {
 						placeChip(sender, 1);
 					}
 				}
-				checkVictory();
-				checkDraw();
+                checkDraw();
+                checkVictory();
 			}
 
 			cellLeaveCalled = false;
@@ -109,8 +109,8 @@ namespace connectfour_group5 {
 					Random random = new Random();
 					await Task.Delay(random.Next(500, 2000));
 					placeChip(columns[aiColumn][5], 2);
-					checkVictory();
-					checkDraw();
+                    checkDraw();
+                    checkVictory();
 					switchPlayer();
 					cellHover(currentSender, e);
 					aiPlacing = false;
@@ -241,7 +241,12 @@ namespace connectfour_group5 {
 					return;
 				}
 			}
-		}
+			if (draw) {
+                gameover = true;
+                displayWinner(0);
+                return;
+            }
+        }
 
 		public bool horizontalVictory(Cell cell) {
 			int stateToCheck = cell.getState();

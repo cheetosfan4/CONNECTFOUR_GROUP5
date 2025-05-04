@@ -28,7 +28,14 @@
             this.buttonCLOSE = new System.Windows.Forms.Button();
             this.buttonPLAY_AGAIN = new System.Windows.Forms.Button();
             this.buttonREVIEW_GAME = new System.Windows.Forms.Button();
-            this.labelWINNER = new System.Windows.Forms.Label();
+            this.buttonWINNER = new System.Windows.Forms.Button();
+            this.buttonWINS = new System.Windows.Forms.Button();
+            this.buttonLOSSES = new System.Windows.Forms.Button();
+            this.buttonSTATS_LABEL = new System.Windows.Forms.Button();
+            this.buttonWINPCT = new System.Windows.Forms.Button();
+            this.buttonLOSEPCT = new System.Windows.Forms.Button();
+            this.buttonDRAWS = new System.Windows.Forms.Button();
+            this.buttonGAMES = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonTITLE
@@ -103,17 +110,140 @@
             this.buttonREVIEW_GAME.UseVisualStyleBackColor = false;
             this.buttonREVIEW_GAME.Click += new System.EventHandler(this.buttonREVIEW_GAME_Click);
             // 
-            // labelWINNER
+            // buttonWINNER
             // 
-            this.labelWINNER.AutoSize = true;
-            this.labelWINNER.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
-            this.labelWINNER.Font = new System.Drawing.Font("Microsoft Tai Le", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWINNER.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
-            this.labelWINNER.Location = new System.Drawing.Point(203, 72);
-            this.labelWINNER.Name = "labelWINNER";
-            this.labelWINNER.Size = new System.Drawing.Size(399, 61);
-            this.labelWINNER.TabIndex = 5;
-            this.labelWINNER.Text = "PLAYER 1 WINS!";
+            this.buttonWINNER.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonWINNER.FlatAppearance.BorderSize = 3;
+            this.buttonWINNER.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonWINNER.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonWINNER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWINNER.Font = new System.Drawing.Font("Microsoft Tai Le", 36F, System.Drawing.FontStyle.Bold);
+            this.buttonWINNER.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonWINNER.Location = new System.Drawing.Point(133, 37);
+            this.buttonWINNER.Name = "buttonWINNER";
+            this.buttonWINNER.Size = new System.Drawing.Size(550, 75);
+            this.buttonWINNER.TabIndex = 6;
+            this.buttonWINNER.Text = "WINNER!";
+            this.buttonWINNER.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonWINNER.UseVisualStyleBackColor = true;
+            // 
+            // buttonWINS
+            // 
+            this.buttonWINS.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonWINS.FlatAppearance.BorderSize = 3;
+            this.buttonWINS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonWINS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonWINS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWINS.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonWINS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonWINS.Location = new System.Drawing.Point(12, 210);
+            this.buttonWINS.Name = "buttonWINS";
+            this.buttonWINS.Size = new System.Drawing.Size(150, 40);
+            this.buttonWINS.TabIndex = 7;
+            this.buttonWINS.Text = "Wins: ";
+            this.buttonWINS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonWINS.UseVisualStyleBackColor = true;
+            // 
+            // buttonLOSSES
+            // 
+            this.buttonLOSSES.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonLOSSES.FlatAppearance.BorderSize = 3;
+            this.buttonLOSSES.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonLOSSES.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonLOSSES.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLOSSES.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonLOSSES.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonLOSSES.Location = new System.Drawing.Point(12, 256);
+            this.buttonLOSSES.Name = "buttonLOSSES";
+            this.buttonLOSSES.Size = new System.Drawing.Size(150, 40);
+            this.buttonLOSSES.TabIndex = 8;
+            this.buttonLOSSES.Text = "Losses:";
+            this.buttonLOSSES.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonLOSSES.UseVisualStyleBackColor = true;
+            // 
+            // buttonSTATS_LABEL
+            // 
+            this.buttonSTATS_LABEL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonSTATS_LABEL.FlatAppearance.BorderSize = 3;
+            this.buttonSTATS_LABEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonSTATS_LABEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonSTATS_LABEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSTATS_LABEL.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonSTATS_LABEL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonSTATS_LABEL.Location = new System.Drawing.Point(12, 118);
+            this.buttonSTATS_LABEL.Name = "buttonSTATS_LABEL";
+            this.buttonSTATS_LABEL.Size = new System.Drawing.Size(150, 40);
+            this.buttonSTATS_LABEL.TabIndex = 9;
+            this.buttonSTATS_LABEL.Text = "Stats against AI:";
+            this.buttonSTATS_LABEL.UseVisualStyleBackColor = true;
+            // 
+            // buttonWINPCT
+            // 
+            this.buttonWINPCT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonWINPCT.FlatAppearance.BorderSize = 3;
+            this.buttonWINPCT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonWINPCT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonWINPCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWINPCT.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonWINPCT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonWINPCT.Location = new System.Drawing.Point(12, 348);
+            this.buttonWINPCT.Name = "buttonWINPCT";
+            this.buttonWINPCT.Size = new System.Drawing.Size(150, 40);
+            this.buttonWINPCT.TabIndex = 10;
+            this.buttonWINPCT.Text = "Win%: ";
+            this.buttonWINPCT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonWINPCT.UseVisualStyleBackColor = true;
+            // 
+            // buttonLOSEPCT
+            // 
+            this.buttonLOSEPCT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonLOSEPCT.FlatAppearance.BorderSize = 3;
+            this.buttonLOSEPCT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonLOSEPCT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonLOSEPCT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLOSEPCT.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonLOSEPCT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonLOSEPCT.Location = new System.Drawing.Point(12, 394);
+            this.buttonLOSEPCT.Name = "buttonLOSEPCT";
+            this.buttonLOSEPCT.Size = new System.Drawing.Size(150, 40);
+            this.buttonLOSEPCT.TabIndex = 11;
+            this.buttonLOSEPCT.Text = "Loss%: ";
+            this.buttonLOSEPCT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonLOSEPCT.UseVisualStyleBackColor = true;
+            // 
+            // buttonDRAWS
+            // 
+            this.buttonDRAWS.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonDRAWS.FlatAppearance.BorderSize = 3;
+            this.buttonDRAWS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonDRAWS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonDRAWS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDRAWS.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonDRAWS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonDRAWS.Location = new System.Drawing.Point(12, 302);
+            this.buttonDRAWS.Name = "buttonDRAWS";
+            this.buttonDRAWS.Size = new System.Drawing.Size(150, 40);
+            this.buttonDRAWS.TabIndex = 12;
+            this.buttonDRAWS.Text = "Draws: ";
+            this.buttonDRAWS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDRAWS.UseVisualStyleBackColor = true;
+            // 
+            // buttonGAMES
+            // 
+            this.buttonGAMES.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonGAMES.FlatAppearance.BorderSize = 3;
+            this.buttonGAMES.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonGAMES.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
+            this.buttonGAMES.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGAMES.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonGAMES.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(171)))), ((int)(((byte)(18)))));
+            this.buttonGAMES.Location = new System.Drawing.Point(12, 164);
+            this.buttonGAMES.Name = "buttonGAMES";
+            this.buttonGAMES.Size = new System.Drawing.Size(150, 40);
+            this.buttonGAMES.TabIndex = 13;
+            this.buttonGAMES.Text = "Games: ";
+            this.buttonGAMES.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonGAMES.UseVisualStyleBackColor = true;
             // 
             // formGAMEOVER
             // 
@@ -122,7 +252,14 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(69)))), ((int)(((byte)(222)))));
             this.BackgroundImage = global::connectfour_group5.Properties.Resources.connectfour_gamebg;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.labelWINNER);
+            this.Controls.Add(this.buttonGAMES);
+            this.Controls.Add(this.buttonDRAWS);
+            this.Controls.Add(this.buttonLOSEPCT);
+            this.Controls.Add(this.buttonWINPCT);
+            this.Controls.Add(this.buttonSTATS_LABEL);
+            this.Controls.Add(this.buttonLOSSES);
+            this.Controls.Add(this.buttonWINS);
+            this.Controls.Add(this.buttonWINNER);
             this.Controls.Add(this.buttonREVIEW_GAME);
             this.Controls.Add(this.buttonPLAY_AGAIN);
             this.Controls.Add(this.buttonCLOSE);
@@ -135,7 +272,6 @@
             this.Text = "Connect Four: Game Over";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formGAMEOVER_FormClosed);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
 		}
 
@@ -145,6 +281,13 @@
 		private System.Windows.Forms.Button buttonCLOSE;
 		private System.Windows.Forms.Button buttonPLAY_AGAIN;
 		private System.Windows.Forms.Button buttonREVIEW_GAME;
-		private System.Windows.Forms.Label labelWINNER;
-	}
+        private System.Windows.Forms.Button buttonWINNER;
+        private System.Windows.Forms.Button buttonWINS;
+        private System.Windows.Forms.Button buttonLOSSES;
+        private System.Windows.Forms.Button buttonSTATS_LABEL;
+        private System.Windows.Forms.Button buttonWINPCT;
+        private System.Windows.Forms.Button buttonLOSEPCT;
+        private System.Windows.Forms.Button buttonDRAWS;
+        private System.Windows.Forms.Button buttonGAMES;
+    }
 }
