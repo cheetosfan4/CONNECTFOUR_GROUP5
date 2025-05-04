@@ -10,12 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//------------------------------------------------------------------------------------------------------------
-// Names: Marc McLennan, Jacob Young, Austin Thornton
-// Date:  05/04/2025
-// Desc:  The statistics form showing stats such as player wins and losses, win rates, and # of games played
-//------------------------------------------------------------------------------------------------------------
-
 namespace connectfour_group5
 {
 	public partial class formSTATISTICS : Form {

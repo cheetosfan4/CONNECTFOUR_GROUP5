@@ -14,13 +14,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//----------------------------------------------------------------------------------------------
-// Names: Marc McLennan, Jacob Young, Austin Thornton
-// Date:  05/04/2025
-// Desc:  The first form that will be seen upon running the program, giving the user access to
-//        singleplayer, multiplayer, and statistics
-//----------------------------------------------------------------------------------------------
-
 namespace connectfour_group5 {
     public partial class formTITLE : Form {
 

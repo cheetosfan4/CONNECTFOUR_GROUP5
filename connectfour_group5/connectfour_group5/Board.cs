@@ -7,12 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//----------------------------------------------------------------------------------------------
-// Names: Marc McLennan, Jacob Young, Austin Thornton
-// Date:  05/04/2025
-// Desc:  Contains all information stored in each board, including initial setup and cells
-//----------------------------------------------------------------------------------------------
-
 namespace connectfour_group5 {
 	internal class Board {
 		private List<Cell> cells;
