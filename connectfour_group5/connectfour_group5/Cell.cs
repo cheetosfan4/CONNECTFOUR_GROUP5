@@ -11,22 +11,16 @@ namespace connectfour_group5 {
         private int yCoord;
 
         public Cell() {
-            //state should be used for what the cell has in it
-            //0 for empty, 1 for player 1's piece, and 2 for player 2's piece
+            //state determines chip color
+            //0 for empty, 1 for player 1's piece, 2 for player 2's piece
             //3 for player 1's preview, and 4 for player 2's preview
             state = 0;
-            //x and y coords should just be integers counting up by 1, not their actual form control's coordinates on the form
-            //that way it's simple to know which one you're manipulating
+            // x increases right
+            // y increases down
             xCoord = 0;
             yCoord = 0;
         }
-        public Cell(int s, int x, int y) {
-            state = s;
-            xCoord = x;
-            yCoord = y;
-        }
 
-        //i think each cell on the form should be a picturebox, and when the cell object changes state it will load a different image onto it's respective picturebox
         public void setState(int s) {
             state = s;
         }
@@ -44,10 +38,6 @@ namespace connectfour_group5 {
         }
         public int getYCoord() {
             return yCoord;
-        }
-
-        public override string ToString() {
-            return "Cell: Position (" + xCoord + ", " + yCoord + "), State " + state;
         }
     }
 }

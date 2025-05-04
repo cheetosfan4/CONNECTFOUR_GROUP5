@@ -63,19 +63,10 @@ namespace connectfour_group5 {
 			tform.Close();
 		}
 
-		//    !!!IMPORTANT!!!
-		//when we make the ai i think it should call an overloaded version of placeChip()
-		//i wrote placeChip() to include code for player 2 (the ai) but i think it will have to be a separate function
-		//cause it cant click on stuff lol so it won't have a "sender" object
-
 		private async void cellClick(object sender, EventArgs e) {
 			if (aiPlacing) {
 				return;
 			}
-
-			//i added these variables to check the amount of chips in the column BEFORE the new one is placed
-			//if its five, the next one will fill up the column
-			//continued explanation below
 
 			int column = columnCheck(sender);
 			int y = board.updateCell(player + 2, column);
@@ -93,14 +84,9 @@ namespace connectfour_group5 {
 			}
 
 			cellLeaveCalled = false;
-			
-			//if i made it check the amount after placing the chip it wouldn't switch players upon placing the top chip
-			 //so i made it check the amount beforehand to avoid that
 
 			if (y != -1 && !gameover) {
 				switchPlayer();
-				//this is just to re-show the preview chip after the player places one
-				//originally it wouldn't show a new one until the player moved the mouse onto a different cell but i thought that looked weird
 				cellHover(sender, e);
 
 				if (!multiplayer) {
@@ -151,30 +137,6 @@ namespace connectfour_group5 {
 						return c;
 					}
 				}
-
-				// simplified with another loop
-
-				/*if (sender.Equals(columns[0][c])) {
-					return 0;
-				}
-				if (sender.Equals(columns[1][c])) {
-					return 1;
-				}
-				if (sender.Equals(columns[2][c])) {
-					return 2;
-				}
-				if (sender.Equals(columns[3][c])) {
-					return 3;
-				}
-				if (sender.Equals(columns[4][c])) {
-					return 4;
-				}
-				if (sender.Equals(columns[5][c])) {
-					return 5;
-				}
-				if (sender.Equals(columns[6][c])) {
-					return 6;
-				}*/
 			}
 
 			//this is just in case some weird error happens
@@ -186,8 +148,6 @@ namespace connectfour_group5 {
 			int y;
 			Image image;
 			int column = columnCheck(sender);
-			//updateCell() gets the cell's y value when updating it
-			//so i just had it return that y value to use in this function
 			y = board.updateCell(player, column);
 
 			switch (player) {
@@ -228,7 +188,6 @@ namespace connectfour_group5 {
 		}
 
 		public void checkVictory() {
-			// loop through every slot and check the cell at that slot
 			foreach (Cell cell in cells) {		
 				if (
 					horizontalVictory(cell) ||
@@ -337,8 +296,6 @@ namespace connectfour_group5 {
 		public void columnSetup() {
 			// columns are ordered bottom to top
 
-			//i like what you did with the columns it made it easier to write the other stuff
-
 			// Individual columns
 			column0[0] = slot35;
 			column0[1] = slot28;
@@ -398,28 +355,5 @@ namespace connectfour_group5 {
 			columns[5] = column5;
 			columns[6] = column6;
 		}
-
-		// AI
-
-		public void checkForWinningCell() {
-
-		}
-
-		/*public Cell verticalWinningCell(Cell cell) {
-			int stateToCheck = cell.getState();
-			if (stateToCheck == 0) {
-				return false;
-			}
-			if (
-				// there is an issue where if you fill a colloum it breaks 
-				board.getCell(cell.getXCoord(), cell.getYCoord() - 1).getState() == stateToCheck &&
-				board.getCell(cell.getXCoord(), cell.getYCoord() - 2).getState() == stateToCheck &&
-				board.getCell(cell.getXCoord(), cell.getYCoord() - 3).getState() == stateToCheck
-			) {
-				return true;
-			} else {
-				return false;
-			}
-		}*/
 	}
 }

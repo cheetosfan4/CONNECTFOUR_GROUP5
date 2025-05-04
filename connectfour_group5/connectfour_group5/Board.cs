@@ -57,16 +57,8 @@ namespace connectfour_group5 {
 			if (columnAmount == 6) {
 				//this is just when the column is full
 				return -1;
-			}
-			else {
+			} else {
 				return columnAmount;
-			}
-		}
-
-		//testing function just to view the data for each cell in the list
-		public void outputCells() {
-			for (int i = 0; i < cells.Count; i++) {
-				Console.WriteLine("\nState: " + cells[i].getState() + "\nX Coord: " + cells[i].getXCoord() + "\nY Coord: " + cells[i].getYCoord());
 			}
 		}
 

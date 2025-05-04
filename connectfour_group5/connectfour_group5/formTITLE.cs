@@ -15,7 +15,6 @@ namespace connectfour_group5 {
 
         public formTITLE() {
             InitializeComponent();
-            //board.outputCells();
         }
 
         public void loadNewForm(object sender, EventArgs e) {
@@ -35,11 +34,6 @@ namespace connectfour_group5 {
                 this.Close();
             }
             this.Hide();
-        }
-
-        private void labelTITLE_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

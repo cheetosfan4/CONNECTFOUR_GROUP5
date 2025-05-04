@@ -36,32 +36,24 @@ namespace connectfour_group5 {
 			buttonWINPCT.Text = "Win%: " + ((double)playerwin / (playerwin + playerloss + draws)).ToString("P2");
 			buttonLOSEPCT.Text = "Loss%: " + ((double)playerloss / (playerwin + playerloss + draws)).ToString("P2");
 
-            // need to make draws
             if (winner == 1) {
 				buttonWINNER.Text = "PLAYER 1 WINS!";
-				//labelWINNER.Text = "PLAYER 1 WINS!";
 				if (!multiplayer) {
 					playerwin++;
 					writetofile();
 				}
 
-			}
-			else if (winner == 2) {
+			} else if (winner == 2) {
 				if (!multiplayer) {
 					buttonWINNER.Text = "COMPUTER WINS!";
-					//labelWINNER.Text = "COMPUTER WINS!";
 					playerloss++;
 					writetofile();
 
-				}
-				else {
+				} else {
 					buttonWINNER.Text = "PLAYER 2 WINS!";
-					//labelWINNER.Text = "PLAYER 2 WINS!";
 				}
-			}
-			else {
+			} else {
 				buttonWINNER.Text = "DRAW!";
-				//labelWINNER.Text = "DRAW!";
 				if (!multiplayer) {
 					draws++;
 					writetofile();
@@ -79,7 +71,6 @@ namespace connectfour_group5 {
         }
 
 		private void buttonTITLE_Click(object sender, EventArgs e) {
-			//this.Hide();
 			switching = true;
 			this.Close();
 			tform.Show();
@@ -110,8 +101,6 @@ namespace connectfour_group5 {
 		}
 
 		private void readtxtfile() {
-			// need to change path to work with evveryone
-			//string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
 			string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
 			string line = "";
 			if (File.Exists(filePath)) {
@@ -128,15 +117,11 @@ namespace connectfour_group5 {
 			}
 		}
 
-		private void writetofile()
-		{
-			//string filePath = @"C:\Users\athor\source\repos\CONNECTFOUR_GROUP5\connectfour_group5\connectfour_group5\connectfour_group5\stats.txt";
+		private void writetofile() {
 			string filePath = Path.GetFullPath(@"..\..\Resources\stats.txt");
-			if (File.Exists(filePath))
-			{
+			if (File.Exists(filePath)) {
 				File.WriteAllText(filePath, string.Empty);
-				using (StreamWriter writer = new StreamWriter(filePath))
-				{
+				using (StreamWriter writer = new StreamWriter(filePath)) {
 					try {
 						writer.WriteLine(playerwin);
 						writer.WriteLine(playerloss);
@@ -145,9 +130,7 @@ namespace connectfour_group5 {
 						MessageBox.Show(e.ToString());
 					}
 				}
-			}
-			else
-			{
+			} else {
 				MessageBox.Show($"File not found: {filePath}");  
 			}
 		}

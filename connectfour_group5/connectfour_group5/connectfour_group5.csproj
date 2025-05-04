@@ -70,12 +70,6 @@
     <Compile Include="formGAMEOVER.Designer.cs">
       <DependentUpon>formGAMEOVER.cs</DependentUpon>
     </Compile>
-    <Compile Include="formMULTIPLAYER.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formMULTIPLAYER.Designer.cs">
-      <DependentUpon>formMULTIPLAYER.cs</DependentUpon>
-    </Compile>
     <Compile Include="formTITLE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,9 +92,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="formGAMEOVER.resx">
       <DependentUpon>formGAMEOVER.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formMULTIPLAYER.resx">
-      <DependentUpon>formMULTIPLAYER.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formSTATISTICS.resx">
       <DependentUpon>formSTATISTICS.cs</DependentUpon>
